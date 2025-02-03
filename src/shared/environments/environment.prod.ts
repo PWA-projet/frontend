@@ -1,4 +1,4 @@
-let Host = 'https://adonis-starter.thibaut009.com';
+let Host = '';
 
 export const environment = {
   production: true,
