@@ -1,0 +1,27 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* Application d'un fond clair si l'utilisateur a un mode clair système */
+@media (prefers-color-scheme: light) {
+  body {
+    background: var(--p-surface-50);
+  }
+}
+
+/* Application d'un fond sombre si l'utilisateur a un mode sombre système */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--p-surface-950);
+  }
+}
+
+.p-light {
+  --p-surface-50: #ffffff;
+}
+
+.p-dark {
+  --p-surface-950: #09090b;
+}
+

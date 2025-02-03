@@ -1,0 +1,7 @@
+<h1>Profile Component</h1>
+<div *ngIf="auth">
+  <p>Name : {{ auth.name }}</p>
+  <p>Email : {{ auth.email }}</p>
+  <p-button (click)="logout()" severity="danger" label="Logout" />
+</div>
+<p *ngIf="!auth">No auth found.</p>
