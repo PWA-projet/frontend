@@ -11,10 +11,15 @@ body {
     --mode-color: #f1f1f1;
     --primary-color: #3b60f6;
     --green-color: #13883e;
+    --text-color: #3b3b3b;
   }
 
   body {
     background: var(--mode-color);
+  }
+
+  p {
+    color: var(--text-color);
   }
 }
 
@@ -24,10 +29,15 @@ body {
     --mode-color: #09090b;
     --primary-color: #3b82f6;
     --green-color: #16a34a;
+    --text-color: #a1a1a1;
   }
 
   body {
     background: var(--mode-color);
+  }
+
+  p {
+    color: var(--text-color);
   }
 }
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-channel',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './create-channel.component.css'
 })
 export class CreateChannelComponent {
+  constructor(private location: Location) {}
 
+  goToBack(): void {
+    this.location.back();
+  }
 }

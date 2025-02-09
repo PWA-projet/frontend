@@ -48,7 +48,7 @@ h1 {
 
 .channels .card-content .pi-angle-right {
   font-size: 1.15rem;
-  color: gray;
+  color: var(--text-color);;
 }
 
 /* Add Content */
@@ -76,7 +76,7 @@ h1 {
 
 .add-content span {
   font-size: 0.8rem;
-  color: gray;
+  color: var(--text-color);;
 }
 
 
