@@ -7,11 +7,13 @@ import { LoginComponent } from "./pages/auth/login/login.component";
 import { HomeComponent } from "./pages/home/home.component";
 import { ProfileComponent } from "./pages/profile/profile.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
+import { ChannelComponent } from './pages/channel/channel.component';
+import { CreateChannelComponent } from './pages/channel/create-channel/create-channel.component';
+import { JoinChannelComponent } from './pages/channel/join-channel/join-channel.component';
 
 export const routes: Routes = [
   {
     path: 'auth',
-    // NoAuthGuard routes
     canActivate : [NoAuthGuard],
     children: [
       { path: 'register', component: RegisterComponent },
@@ -20,11 +22,19 @@ export const routes: Routes = [
   },
   {
     path: '',
-    // AuthGuard routes
     canActivate : [AuthGuard],
     children: [
       { path: '', component: HomeComponent },
       { path: 'profile', component: ProfileComponent },
+    ],
+  },
+  {
+    path: 'channel',
+    canActivate : [AuthGuard],
+    children: [
+      { path: '', component: ChannelComponent },
+      { path: 'create', component: CreateChannelComponent },
+      { path: 'join', component: JoinChannelComponent },
     ],
   },
   // public routes
