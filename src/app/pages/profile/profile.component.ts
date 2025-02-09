@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
     return this.authService.logout().subscribe({
       next: () => {
         this.jwtService.clearTokens();
-        this.router.navigate(['/']);
+        this.router.navigate(['/auth/login']);
         console.log('Déconnexion réussie');
       },
       error: (error) => console.error('Erreur lors de la déconnexion', error)

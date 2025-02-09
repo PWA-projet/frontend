@@ -11,19 +11,23 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 export const routes: Routes = [
   {
     path: 'auth',
-    canActivate : [NoAuthGuard],
     // NoAuthGuard routes
+    canActivate : [NoAuthGuard],
     children: [
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
     ],
   },
   {
+    path: '',
     // AuthGuard routes
-    canActivate : [AuthGuard], path: 'profile', component: ProfileComponent,
+    canActivate : [AuthGuard],
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'profile', component: ProfileComponent },
+    ],
   },
   // public routes
-  { path: '', component: HomeComponent },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
 
