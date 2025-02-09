@@ -11,12 +11,16 @@
   </div>
 
   <div class="add-content">
-    <i class="pi pi-plus-circle"></i>
+    <i class="pi pi-plus-circle" (click)="showDrawer()"></i>
     <span>Ajouter un channel</span>
   </div>
 </section>
 
-<div class="drawer">
+<!-- Fond sombre -->
+<div class="page-overlay"></div>
+
+<!-- Drawer -->
+<div class="drawer" [ngClass]="{ 'drawer-open': visible, 'drawer-closed': !visible }">
   <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
     <div class="card-content">
       <i class="pi pi-plus-circle"></i>
