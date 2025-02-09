@@ -1,7 +1,7 @@
 <section>
   <h1>KeyChat</h1>
   <div class="channels">
-    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem' }">
+    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
       <div class="card-content">
         <i class="pi pi-users"></i>
         <span>{{ channel.name }}</span>
