@@ -1,20 +1,18 @@
 <section>
   <h1>KeyChat</h1>
   <div class="channels">
-    <p-card [style]="{ borderRadius: '1rem' }">
+    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem' }">
       <div class="card-content">
         <i class="pi pi-users"></i>
-        <span>CGN 11/11</span>
+        <span>{{ channel.name }}</span>
         <i class="pi pi-angle-right"></i>
       </div>
     </p-card>
-    <p-card [style]="{ borderRadius: '1rem' }">
-      <div class="card-content">
-        <i class="pi pi-users"></i>
-        <span>CGN 11/11</span>
-        <i class="pi pi-angle-right"></i>
-      </div>
-    </p-card>
+  </div>
+
+  <div class="add-content">
+    <p-button [style]="{ width: '4rem', height: '4rem', border: '0.15rem solid #2563eb' }" icon="pi pi-plus" [rounded]="true" [outlined]="true" />
+    <span>Ajouter un channel</span>
   </div>
 </section>
 

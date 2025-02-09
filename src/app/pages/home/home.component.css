@@ -33,3 +33,22 @@ span {
   color: gray;
 }
 
+.add-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--p-surface-950);
+  filter: drop-shadow(0 -6mm 4mm var(--p-surface-950));
+}
+
+.add-content span {
+  font-size: 0.8rem;
+  color: gray;
+}
+
