@@ -8,6 +8,7 @@ This project was generated using [Angular CLI](https://github.com/angular/angula
 
 ## Required
 - node ```v22.0.0```
+- angular ```v19.0.0```
 
 ## Installation
 
