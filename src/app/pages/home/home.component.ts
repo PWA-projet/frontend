@@ -25,10 +25,13 @@ export class HomeComponent {
     { name: 'CGN 15/11' },
     { name: 'CGN 15/11' },
     { name: 'CGN 15/11' },
+    { name: 'CGN 15/11' },
+    { name: 'CGN 15/11' },
+    { name: 'CGN 15/11' },
   ];
 
   // Toggle drawer visibility
   toggleDrawer() {
-    this.visible = !this.visible;  // Just toggle the visibility state
+    this.visible = !this.visible;
   }
 }
