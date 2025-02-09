@@ -6,6 +6,8 @@ h1 {
   font-size: 2.5rem;
 }
 
+/*channels*/
+
 .channels {
   display: flex;
   flex-direction: column;
@@ -33,6 +35,8 @@ h1 {
   color: gray;
 }
 
+/*Add*/
+
 .add-content {
   position: fixed;
   bottom: 0;
@@ -52,3 +56,24 @@ h1 {
   color: gray;
 }
 
+/*drawer*/
+
+.drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.drawer .pi-plus-circle, .pi-link {
+  font-size: 2.5rem;
+  padding-right: 1rem;
+}
+
+.drawer .pi-plus-circle {
+  color: blue;
+}
+
+.drawer .pi-link {
+  color: green;
+}
