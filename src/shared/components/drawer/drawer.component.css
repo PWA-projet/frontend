@@ -26,7 +26,6 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 0.5rem;
-  background: var(--p-surface-950);
   z-index: 9999;
   transition: bottom 0.3s ease-in-out;
 }
@@ -38,11 +37,11 @@
 }
 
 .drawer .pi-plus-circle {
-  color: var(--p-primary-color);
+  color: var(--primary-color);
 }
 
 .drawer .pi-link {
-  color: #16a34a;
+  color: var(--green-color);
 }
 
 .drawer-open {

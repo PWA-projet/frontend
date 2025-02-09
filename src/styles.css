@@ -7,25 +7,27 @@ body {
 
 /* Application d'un fond clair si l'utilisateur a un mode clair système */
 @media (prefers-color-scheme: light) {
+  :root {
+    --mode-color: #f1f1f1;
+    --primary-color: #3b60f6;
+    --green-color: #13883e;
+  }
+
   body {
-    background: var(--p-surface-50);
+    background: var(--mode-color);
   }
 }
 
 /* Application d'un fond sombre si l'utilisateur a un mode sombre système */
 @media (prefers-color-scheme: dark) {
-  body {
-    background: var(--p-surface-950);
+  :root {
+    --mode-color: #09090b;
+    --primary-color: #3b82f6;
+    --green-color: #16a34a;
   }
-}
 
-.p-light {
-  --p-surface-50: #ffffff;
-  --p-primary-color: #3b82f6;
-}
-
-.p-dark {
-  --p-surface-950: #09090b;
-  --p-primary-color: #3b82f6;
+  body {
+    background: var(--mode-color);
+  }
 }
 

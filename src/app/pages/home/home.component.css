@@ -49,15 +49,15 @@ h1 {
   gap: 0.25rem;
   align-items: center;
   padding: 0.75rem;
-  background: var(--p-surface-950);
-  filter: drop-shadow(0 -6mm 4mm var(--p-surface-950));
+  background: var(--mode-color);
+  filter: drop-shadow(0 -6mm 4mm var(--mode-color));
   z-index: 10;
 }
 
 .add-content .pi-plus-circle {
   font-size: 3.5rem;
   padding-right: 1rem;
-  color: var(--p-primary-color);
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -79,13 +79,13 @@ h1 {
 }
 
 .channels::-webkit-scrollbar-thumb {
-  background-color: var(--p-primary-color);
+  background-color: var(--primary-color);
   border-radius: 10px;
   border: 2px solid transparent;
 }
 
 .channels::-webkit-scrollbar-thumb:hover {
-  background-color: var(--p-primary-color);
+  background-color: var(--primary-color);
 }
 
 .channels::-webkit-scrollbar-button {
