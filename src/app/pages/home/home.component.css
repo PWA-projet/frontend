@@ -13,23 +13,23 @@ h1 {
   gap: 1rem;
 }
 
-.card-content {
+.channels .card-content {
   display: flex;
   align-items: center;
 }
 
-.card-content .pi-users {
+.channels .card-content .pi-users {
   font-size: 2em;
   padding-right: 1rem;
 }
 
-.card-content span {
+.channels .card-content span {
   font-size: 1.15rem;
   line-height: 1.25;
   flex-grow: 1;
 }
 
-.card-content .pi-angle-right {
+.channels .card-content .pi-angle-right {
   font-size: 1.15rem;
   color: gray;
 }
@@ -52,71 +52,10 @@ h1 {
 .add-content .pi-plus-circle {
   font-size: 3.5rem;
   padding-right: 1rem;
-  color: blue;
+  color: var(--p-primary-color);
 }
 
 .add-content span {
   font-size: 0.8rem;
   color: gray;
 }
-
-/* Fond sombre semi-transparent pour la page */
-.page-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 9998;
-  display: none;
-  pointer-events: none;
-}
-
-.page-overlay.active {
-  display: block;
-  pointer-events: all;
-}
-
-/* Drawer */
-.drawer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  background: var(--p-surface-950);
-  z-index: 9999;
-  transition: bottom 0.3s ease-in-out;
-}
-
-.drawer .pi-plus-circle,
-.drawer .pi-link {
-  font-size: 2.5rem;
-  padding-right: 1rem;
-}
-
-.drawer .pi-plus-circle {
-  color: blue;
-}
-
-.drawer .pi-link {
-  color: green;
-}
-
-.drawer-open {
-  bottom: 0;
-}
-
-.drawer-closed {
-  bottom: -100%;
-}
-
-.page-no-interactions {
-  pointer-events: none;
-}
-
-

@@ -11,28 +11,10 @@
   </div>
 
   <div class="add-content">
-    <i class="pi pi-plus-circle" (click)="showDrawer()"></i>
+    <i class="pi pi-plus-circle" (click)="toggleDrawer()"></i>
     <span>Ajouter un channel</span>
   </div>
 </section>
 
-<!-- Fond sombre -->
-<div class="page-overlay"></div>
-
-<!-- Drawer -->
-<div class="drawer" [ngClass]="{ 'drawer-open': visible, 'drawer-closed': !visible }">
-  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
-    <div class="card-content">
-      <i class="pi pi-plus-circle"></i>
-      <span>Créer un nouveau channel</span>
-      <i class="pi pi-angle-right"></i>
-    </div>
-  </p-card>
-  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
-    <div class="card-content">
-      <i class="pi pi-link"></i>
-      <span>Rejoindre un channel existant</span>
-      <i class="pi pi-angle-right"></i>
-    </div>
-  </p-card>
-</div>
+<!-- Passing visible status from HomeComponent to DrawerComponent -->
+<app-drawer [visible]="visible" (visibleChange)="visible = $event" />

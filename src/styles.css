@@ -21,9 +21,11 @@ body {
 
 .p-light {
   --p-surface-50: #ffffff;
+  --p-primary-color: #3b82f6;
 }
 
 .p-dark {
   --p-surface-950: #09090b;
+  --p-primary-color: #3b82f6;
 }
 

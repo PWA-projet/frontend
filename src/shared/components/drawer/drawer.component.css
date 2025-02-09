@@ -1,0 +1,74 @@
+/* Fond sombre semi-transparent pour la page */
+.page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: none;
+  pointer-events: none;
+}
+
+.page-overlay.active {
+  display: block;
+  pointer-events: all;
+}
+
+/* Drawer */
+.drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--p-surface-950);
+  z-index: 9999;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.drawer .pi-plus-circle,
+.drawer .pi-link {
+  font-size: 2.5rem;
+  padding-right: 1rem;
+}
+
+.drawer .pi-plus-circle {
+  color: var(--p-primary-color);
+}
+
+.drawer .pi-link {
+  color: #16a34a;
+}
+
+.drawer-open {
+  bottom: 0;
+}
+
+.drawer-closed {
+  bottom: -100%;
+}
+
+.drawer .page-no-interactions {
+  pointer-events: none;
+}
+
+.drawer .card-content {
+  display: flex;
+  align-items: center;
+}
+
+.drawer .card-content span {
+  font-size: 1.15rem;
+  line-height: 1.25;
+  flex-grow: 1;
+}
+
+.drawer .card-content .pi-angle-right {
+  font-size: 1.15rem;
+  color: gray;
+}
