@@ -15,6 +15,7 @@ import { InputText } from 'primeng/inputtext';
 import { Message } from 'primeng/message';
 import { Button } from 'primeng/button';
 import { NgIf } from '@angular/common';
+import {APP_ROUTES} from '../../../../shared/constants/routes';
 
 @Component({
   selector: 'app-register',
@@ -98,6 +99,6 @@ export class RegisterComponent implements OnInit {
   }
 
   goToLogin() {
-    this.router.navigate(['/auth/login']);
+    this.router.navigate([APP_ROUTES.AUTH.LOGIN]);
   }
 }

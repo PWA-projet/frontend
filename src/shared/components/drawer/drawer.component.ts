@@ -2,6 +2,7 @@ import { Component, HostListener, Input, OnChanges, Output, EventEmitter, Simple
 import { Card } from "primeng/card";
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
+import {APP_ROUTES} from '../../constants/routes';
 
 @Component({
   selector: 'app-drawer',
@@ -55,10 +56,10 @@ export class DrawerComponent implements OnChanges {
   }
 
   createChannel() {
-    this.router.navigate(['/channel/create']);
+    this.router.navigate([APP_ROUTES.CHANNEL.CREATE]);
   }
 
   JoinChannel() {
-    this.router.navigate(['/channel/join']);
+    this.router.navigate([APP_ROUTES.CHANNEL.JOIN]);
   }
 }

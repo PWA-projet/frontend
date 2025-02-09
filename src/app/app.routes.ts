@@ -10,35 +10,19 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { ChannelComponent } from './pages/channel/channel.component';
 import { CreateChannelComponent } from './pages/channel/create-channel/create-channel.component';
 import { JoinChannelComponent } from './pages/channel/join-channel/join-channel.component';
+import { APP_ROUTES } from '../shared/constants/routes';
 
 export const routes: Routes = [
-  {
-    path: 'auth',
-    canActivate : [NoAuthGuard],
-    children: [
-      { path: 'register', component: RegisterComponent },
-      { path: 'login', component: LoginComponent },
-    ],
-  },
-  {
-    path: '',
-    canActivate : [AuthGuard],
-    children: [
-      { path: '', component: HomeComponent },
-      { path: 'profile', component: ProfileComponent },
-    ],
-  },
-  {
-    path: 'channel',
-    canActivate : [AuthGuard],
-    children: [
-      { path: '', component: ChannelComponent },
-      { path: 'create', component: CreateChannelComponent },
-      { path: 'join', component: JoinChannelComponent },
-    ],
-  },
-  // public routes
-  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
+  { path: APP_ROUTES.AUTH.REGISTER, component: RegisterComponent, canActivate: [NoAuthGuard] },
+  { path: APP_ROUTES.AUTH.LOGIN, component: LoginComponent, canActivate: [NoAuthGuard] },
+
+  { path: APP_ROUTES.HOME, component: HomeComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.PROFILE, component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.CHANNEL.BASE, component: ChannelComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.CHANNEL.CREATE, component: CreateChannelComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.CHANNEL.JOIN, component: JoinChannelComponent, canActivate: [AuthGuard] },
+
+  { path: APP_ROUTES.NOT_FOUND, component: NotFoundComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

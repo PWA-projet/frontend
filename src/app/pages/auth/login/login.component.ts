@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { AuthLoginI } from '../../../../shared/models/auth.model';
 import { Password } from 'primeng/password';
 import { InputText } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
+import { APP_ROUTES } from '../../../../shared/constants/routes';
 
 @Component({
   selector: 'app-login',
@@ -52,10 +53,10 @@ export class LoginComponent implements OnInit {
   }
 
   goToRegister() {
-    this.router.navigate(['auth/register']);
+    this.router.navigate([APP_ROUTES.AUTH.REGISTER]);
   }
 
   goToHome() {
-    this.router.navigate(['/']);
+    this.router.navigate([APP_ROUTES.HOME]);
   }
 }
