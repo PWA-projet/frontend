@@ -1,6 +1,7 @@
 import { Component, HostListener, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { Card } from "primeng/card";
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drawer',
@@ -14,6 +15,10 @@ import { NgClass } from '@angular/common';
 export class DrawerComponent implements OnChanges {
   @Input() visible: boolean = false;
   @Output() visibleChange = new EventEmitter<boolean>(); // Emit visibility change
+
+  constructor(
+    private router: Router
+  ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['visible']) {
@@ -47,5 +52,13 @@ export class DrawerComponent implements OnChanges {
       this.visibleChange.emit(this.visible); // Emit the updated visibility state
       this.toggleOverlay();  // Update the dark background state
     }
+  }
+
+  createChannel() {
+    this.router.navigate(['/channel/create']);
+  }
+
+  JoinChannel() {
+    this.router.navigate(['/channel/join']);
   }
 }

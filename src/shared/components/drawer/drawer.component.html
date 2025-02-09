@@ -3,14 +3,14 @@
 
 <!-- Drawer -->
 <div class="drawer" [ngClass]="{ 'drawer-open': visible, 'drawer-closed': !visible }">
-  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
+  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }" (click)="createChannel()">
     <div class="card-content">
       <i class="pi pi-plus-circle"></i>
       <span>Créer un nouveau channel</span>
       <i class="pi pi-angle-right"></i>
     </div>
   </p-card>
-  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
+  <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }" (click)="JoinChannel()">
     <div class="card-content">
       <i class="pi pi-link"></i>
       <span>Rejoindre un channel existant</span>
