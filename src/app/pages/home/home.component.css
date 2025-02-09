@@ -51,6 +51,12 @@ h1 {
   filter: drop-shadow(0 -6mm 4mm var(--p-surface-950));
 }
 
+.add-content .pi-plus-circle {
+  font-size: 3.5rem;
+  padding-right: 1rem;
+  color: blue;
+}
+
 .add-content span {
   font-size: 0.8rem;
   color: gray;
