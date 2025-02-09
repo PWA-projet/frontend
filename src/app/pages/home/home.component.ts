@@ -44,4 +44,8 @@ export class HomeComponent {
   goToProfile() {
     this.router.navigate([APP_ROUTES.PROFILE]);
   }
+
+  goToChannel() {
+    this.router.navigate([APP_ROUTES.CHANNEL.BASE]);
+  }
 }
