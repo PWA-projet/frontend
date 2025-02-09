@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Card } from 'primeng/card';
 import { NgForOf } from '@angular/common';
 import { DrawerComponent } from '../../../shared/components/drawer/drawer.component';
+import { Router } from '@angular/router';
+import { APP_ROUTES } from '../../../shared/constants/routes';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,10 @@ import { DrawerComponent } from '../../../shared/components/drawer/drawer.compon
 })
 export class HomeComponent {
   visible: boolean = false;
+
+  constructor(
+    private router: Router
+  ) {}
 
   channels = [
     { name: 'CGN 11/11' },
@@ -33,5 +39,9 @@ export class HomeComponent {
   // Toggle drawer visibility
   toggleDrawer() {
     this.visible = !this.visible;
+  }
+
+  goToProfile() {
+    this.router.navigate([APP_ROUTES.PROFILE]);
   }
 }

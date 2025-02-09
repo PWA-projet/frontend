@@ -3,8 +3,21 @@ section {
   overflow: auto;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
 h1 {
   font-size: 2.5rem;
+  margin: 0;
+}
+
+.pi-user {
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 /* Channel */
