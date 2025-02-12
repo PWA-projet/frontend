@@ -40,7 +40,7 @@ export class CreateChannelComponent implements OnInit {
         next: (response) => {
           console.log(response.success);
         },
-        error: (error) => console.error('Create channel failed:', error)
+        error: (error) => console.error('Channel create failed:', error)
       });
     } else {
       console.error('Form is invalid');

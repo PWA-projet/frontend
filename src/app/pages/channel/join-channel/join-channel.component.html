@@ -3,13 +3,23 @@
     <i class="pi pi-angle-left" (click)="goToBack()"></i>
   </div>
 
-  <div class="content">
-    <i class="pi pi-link"></i>
-    <h2>Rejoindre un channel</h2>
-    <p>Demandez à vos amis de vous donner la clé du channel que vous voulez rejoindre. Il vous suffira ensuite de la renseigner juste en dessous.</p>
-    <div class="action">
-      <input type="text" pInputText variant="filled" maxlength="8" />
-      <p-button type="submit" label="Rejoindre" [style]="{ width: '100%' }" />
+  <form [formGroup]="joinChannelForm" (ngSubmit)="joinChannel()">
+    <div class="form-group">
+      <i class="pi pi-link"></i>
+      <h2>Rejoindre un channel</h2>
+      <p>Demandez à vos amis de vous donner la clé du channel que vous voulez rejoindre. Il vous suffira ensuite de la renseigner juste en dessous.</p>
+      <input
+        id="key"
+        type="text"
+        pInputText
+        variant="filled"
+        maxlength="8"
+        formControlName="key"
+      />
     </div>
-  </div>
+
+    <div class="form-actions">
+      <p-button type="submit" label="Rejoindre" [style]="{ width: '100%' }" [disabled]="joinChannelForm.invalid" />
+    </div>
+  </form>
 </section>

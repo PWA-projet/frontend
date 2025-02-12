@@ -19,4 +19,8 @@ export class ChannelService {
   create(channel: ChannelI): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, channel);
   }
+
+  join(key: string): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/join`, key);
+  }
 }
