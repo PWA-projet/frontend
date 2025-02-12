@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { ChannelService } from '../../../../shared/services/channel.service';
 import { ChannelI } from '../../../../shared/models/channel.model';
 import { Button } from 'primeng/button';
+import { APP_ROUTES } from '../../../../shared/constants/routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-channel',
@@ -22,7 +24,8 @@ export class CreateChannelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private channelService: ChannelService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +42,7 @@ export class CreateChannelComponent implements OnInit {
       this.channelService.create(newChannel).subscribe({
         next: (response) => {
           console.log(response.success);
+          this.goToHome();
         },
         error: (error) => console.error('Channel create failed:', error)
       });
@@ -49,5 +53,9 @@ export class CreateChannelComponent implements OnInit {
 
   goToBack(): void {
     this.location.back();
+  }
+
+  goToHome() {
+    this.router.navigate([APP_ROUTES.HOME]);
   }
 }

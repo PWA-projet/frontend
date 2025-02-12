@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { Button } from 'primeng/button';
 import { Location } from '@angular/common';
 import { ChannelService } from '../../../../shared/services/channel.service';
+import { APP_ROUTES } from '../../../../shared/constants/routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-channel',
@@ -22,7 +24,8 @@ export class JoinChannelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private channelService: ChannelService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +48,7 @@ export class JoinChannelComponent implements OnInit {
       this.channelService.join(key).subscribe({
         next: (response) => {
           console.log(response.success);
+          this.goToHome();
         },
         error: (error) => console.error('Channel join failed:', error)
       });
@@ -55,5 +59,9 @@ export class JoinChannelComponent implements OnInit {
 
   goToBack(): void {
     this.location.back();
+  }
+
+  goToHome() {
+    this.router.navigate([APP_ROUTES.HOME]);
   }
 }
