@@ -16,8 +16,8 @@
         maxlength="25"
         formControlName="name"
       />
-      <p-message *ngIf="createChannelForm.get('name')?.hasError('minlength') && createChannelForm.get('name')?.touched" severity="error" text="Name must be at least 3 characters"></p-message>
-      <p-message *ngIf="createChannelForm.get('name')?.hasError('maxlength') && createChannelForm.get('name')?.touched" severity="error" text="Name must be at strong 25 characters"></p-message>
+      <p-message *ngIf="createChannelForm.get('name')?.hasError('minlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au moins 3 caractères"></p-message>
+      <p-message *ngIf="createChannelForm.get('name')?.hasError('maxlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au maximum 25 caractères"></p-message>
     </div>
 
     <div class="form-actions">
