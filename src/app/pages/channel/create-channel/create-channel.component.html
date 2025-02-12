@@ -2,4 +2,21 @@
   <div class="header">
     <i class="pi pi-angle-left" (click)="goToBack()"></i>
   </div>
+
+  <form [formGroup]="createChannelForm" (ngSubmit)="createChannel()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        type="text"
+        pInputText
+        formControlName="name"
+        placeholder="Enter the name"
+      />
+    </div>
+
+    <div class="form-actions">
+      <p-button type="submit" label="Submit" [disabled]="createChannelForm.invalid" />
+    </div>
+  </form>
 </section>
