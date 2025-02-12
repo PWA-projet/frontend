@@ -16,6 +16,7 @@
         maxlength="8"
         formControlName="key"
       />
+      <p-message *ngIf="channelNotFound" severity="error" text="Channel introuvable avec cette clé"></p-message>
     </div>
 
     <div class="form-actions">
