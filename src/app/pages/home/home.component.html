@@ -1,11 +1,11 @@
-<section>
+<section class="home">
   <div class="header">
     <h1>KeyChat</h1>
     <i class="pi pi-user" (click)="goToProfile()"></i>
   </div>
 
   <div class="channels">
-    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem', cursor: 'pointer' }" (click)="goToChannel()">
+    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem', cursor: 'pointer' }" (click)="goToChannel(channel.id)">
       <div class="card-content">
         <i class="pi pi-users"></i>
         <span>{{ channel.name }}</span>

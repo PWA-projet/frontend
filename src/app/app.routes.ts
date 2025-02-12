@@ -18,9 +18,9 @@ export const routes: Routes = [
 
   { path: APP_ROUTES.HOME, component: HomeComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.PROFILE, component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: APP_ROUTES.CHANNEL.BASE, component: ChannelComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.CHANNEL.CREATE, component: CreateChannelComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.CHANNEL.JOIN, component: JoinChannelComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.CHANNEL.ID, component: ChannelComponent, canActivate: [AuthGuard] },
 
   { path: APP_ROUTES.NOT_FOUND, component: NotFoundComponent, pathMatch: 'full' },
 ];

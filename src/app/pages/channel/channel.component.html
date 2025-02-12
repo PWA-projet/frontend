@@ -1,1 +1,19 @@
-<p>channel works!</p>
+<section class="channel">
+  <div class="header">
+    <i class="pi pi-angle-left" (click)="goToBack()"></i>
+    <h1>{{ channel.name }}</h1>
+    <i class="pi pi-users"></i>
+  </div>
+
+  <div class="message">
+    <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
+      <div class="card-content">
+        <span>message.....</span>
+      </div>
+    </p-card>
+  </div>
+
+  <div class="send-message">
+    <span>Envoyer un message</span>
+  </div>
+</section>

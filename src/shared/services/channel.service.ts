@@ -20,6 +20,10 @@ export class ChannelService {
     return this.http.post<ChannelI>(`${this.apiUrl}`, channel);
   }
 
+  show(id: number): Observable<ChannelI> {
+    return this.http.get<ChannelI>(`${this.apiUrl}/${id}`);
+  }
+
   join(key: string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/join`, key);
   }

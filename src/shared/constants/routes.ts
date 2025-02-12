@@ -6,7 +6,7 @@ export const APP_ROUTES = {
   HOME: '',
   PROFILE: 'profile',
   CHANNEL: {
-    BASE: 'channel',
+    ID: 'channel/:id',
     CREATE: 'channel/create',
     JOIN: 'channel/join',
   },
