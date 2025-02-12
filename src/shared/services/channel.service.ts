@@ -12,6 +12,10 @@ export class ChannelService {
 
   constructor(private http: HttpClient) {}
 
+  index(): Observable<ChannelI[]> {
+    return this.http.get<ChannelI[]>(`${this.apiUrl}`);
+  }
+
   create(channel: ChannelI): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}`, channel);
   }
