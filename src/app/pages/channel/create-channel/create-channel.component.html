@@ -5,18 +5,23 @@
 
   <form [formGroup]="createChannelForm" (ngSubmit)="createChannel()">
     <div class="form-group">
-      <label for="name">Name</label>
+      <i class="pi pi-plus-circle"></i>
+      <h2>Créer un channel</h2>
+      <p>Créez votre propre channel et partagez la clé avec vos amis pour qu’ils puissent vous rejoindre. Entrez simplement un nom et lancez-vous !</p>
       <input
         id="name"
         type="text"
         pInputText
+        variant="filled"
+        maxlength="25"
         formControlName="name"
-        placeholder="Enter the name"
       />
+      <p-message *ngIf="createChannelForm.get('name')?.hasError('minlength') && createChannelForm.get('name')?.touched" severity="error" text="Name must be at least 3 characters"></p-message>
+      <p-message *ngIf="createChannelForm.get('name')?.hasError('maxlength') && createChannelForm.get('name')?.touched" severity="error" text="Name must be at strong 25 characters"></p-message>
     </div>
 
     <div class="form-actions">
-      <p-button type="submit" label="Submit" [disabled]="createChannelForm.invalid" />
+      <p-button type="submit" label="Créer le channel" [style]="{ width: '100%' }" [disabled]="createChannelForm.invalid" />
     </div>
   </form>
 </section>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import {Location, NgIf} from '@angular/common';
 import { InputText } from "primeng/inputtext";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ChannelService } from '../../../../shared/services/channel.service';
@@ -7,13 +7,16 @@ import { ChannelI } from '../../../../shared/models/channel.model';
 import { Button } from 'primeng/button';
 import { APP_ROUTES } from '../../../../shared/constants/routes';
 import { Router } from '@angular/router';
+import {Message} from 'primeng/message';
 
 @Component({
   selector: 'app-create-channel',
   imports: [
     InputText,
     ReactiveFormsModule,
-    Button
+    Button,
+    Message,
+    NgIf
   ],
   templateUrl: './create-channel.component.html',
   styleUrl: './create-channel.component.css'
@@ -30,7 +33,7 @@ export class CreateChannelComponent implements OnInit {
 
   ngOnInit(): void {
     this.createChannelForm = this.fb.group({
-        name: ['', [Validators.required, Validators.minLength(3)]],
+        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       },
     );
   }
