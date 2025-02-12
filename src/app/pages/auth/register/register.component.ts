@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
 
       this.authService.register(newUser).subscribe({
         next: (response) => {
-          console.log(response.success);
+          console.log("Account successfully created : ", response.name);
           this.goToLogin();
         },
         error: (error) => console.error('Registration failed:', error)

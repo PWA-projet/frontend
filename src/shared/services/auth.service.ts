@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.dev';
-import { AuthLoginI, AuthRegisterI, AuthResponseI, AuthUserI } from '../models/auth.model';
+import { AuthLoginI, AuthRegisterI, AuthUserI } from '../models/auth.model';
 import { JwtService } from "./jwt.service";
 
 @Injectable({
@@ -13,12 +13,12 @@ export class AuthService {
 
   constructor(private http: HttpClient, private JwtService: JwtService) {}
 
-  register(credentials: AuthRegisterI): Observable<AuthResponseI> {
-    return this.http.post<AuthResponseI>(`${this.apiUrl}/register`, credentials);
+  register(credentials: AuthRegisterI): Observable<AuthRegisterI> {
+    return this.http.post<AuthRegisterI>(`${this.apiUrl}/register`, credentials);
   }
 
-  login(credentials: AuthLoginI): Observable<AuthResponseI> {
-    return this.http.post<AuthResponseI>(`${this.apiUrl}/login`, credentials);
+  login(credentials: AuthLoginI): Observable<AuthRegisterI> {
+    return this.http.post<AuthRegisterI>(`${this.apiUrl}/login`, credentials);
   }
 
   logout(): Observable<void> {

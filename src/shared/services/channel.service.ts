@@ -16,8 +16,8 @@ export class ChannelService {
     return this.http.get<ChannelI[]>(`${this.apiUrl}`);
   }
 
-  create(channel: ChannelI): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, channel);
+  create(channel: ChannelI): Observable<ChannelI> {
+    return this.http.post<ChannelI>(`${this.apiUrl}`, channel);
   }
 
   join(key: string): Observable<any> {

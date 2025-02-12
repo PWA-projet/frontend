@@ -44,7 +44,7 @@ export class CreateChannelComponent implements OnInit {
 
       this.channelService.create(newChannel).subscribe({
         next: (response) => {
-          console.log(response.success);
+          console.log("Channel successfully created : ", response.name);
           this.goToHome();
         },
         error: (error) => console.error('Channel create failed:', error)

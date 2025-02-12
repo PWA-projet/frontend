@@ -12,8 +12,3 @@ export interface AuthUserI {
   name: string;
   email: string;
 }
-
-export interface AuthResponseI {
-  success?: string;
-  errors?: string;
-}
