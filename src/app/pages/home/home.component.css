@@ -69,7 +69,6 @@ h1 {
 
 .add-content .pi-plus-circle {
   font-size: 3.5rem;
-  padding-right: 1rem;
   color: var(--primary-color);
   cursor: pointer;
 }

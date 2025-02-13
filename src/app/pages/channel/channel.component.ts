@@ -7,6 +7,9 @@ import { Card } from 'primeng/card';
 import { ActivatedRoute } from '@angular/router';
 import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
 import { MessageI } from '../../../shared/models/message.model';
+import { InputText } from "primeng/inputtext";
+import { ReactiveFormsModule } from "@angular/forms";
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-channel',
@@ -15,6 +18,9 @@ import { MessageI } from '../../../shared/models/message.model';
     NgIf,
     NgForOf,
     NgClass,
+    InputText,
+    ReactiveFormsModule,
+    Button,
   ],
   templateUrl: './channel.component.html',
   standalone: true,

@@ -32,7 +32,7 @@ h1 {
   gap: 1rem;
   overflow-y: auto;
   max-height: calc(100vh - 150px);
-  padding-bottom: 100px;
+  padding-bottom: 40px;
 }
 
 .message .card {
@@ -71,27 +71,19 @@ h1 {
   left: 0;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  flex-direction: row;
+  gap: 1rem;
   align-items: center;
-  padding: 0.75rem;
+  padding: 0.8rem 2rem;
   background: var(--mode-color);
-  filter: drop-shadow(0 -6mm 4mm var(--mode-color));
   z-index: 10;
 }
 
-.send-message .pi-plus-circle {
-  font-size: 3.5rem;
-  padding-right: 1rem;
-  color: var(--primary-color);
-  cursor: pointer;
+.send-message input {
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 2rem;
 }
-
-.send-message span {
-  font-size: 0.8rem;
-  color: var(--text-color);;
-}
-
 
 /* Webkit scrollbar for Chrome, Safari, and Edge */
 .message::-webkit-scrollbar {
