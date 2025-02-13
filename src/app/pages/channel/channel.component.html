@@ -7,9 +7,9 @@
 
   <div class="message">
     <p-card *ngFor="let msg of messages" [style]="{ borderRadius: '1rem' }">
-      <div class="card-content">
-        <span class="name">{{ msg.name }}</span>
-        <span class="text">{{ msg.text }}</span>
+      <div class="card">
+        <span class="name">{{ msg.author.name }}</span>
+        <span class="content">{{ msg.content }}</span>
       </div>
     </p-card>
   </div>
