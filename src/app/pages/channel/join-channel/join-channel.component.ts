@@ -19,6 +19,7 @@ import { Message } from 'primeng/message';
     NgIf
   ],
   templateUrl: './join-channel.component.html',
+  standalone: true,
   styleUrl: './join-channel.component.css'
 })
 export class JoinChannelComponent implements OnInit {

@@ -17,6 +17,7 @@ import { MessageI } from '../../../shared/models/message.model';
     NgClass,
   ],
   templateUrl: './channel.component.html',
+  standalone: true,
   styleUrl: './channel.component.css'
 })
 export class ChannelComponent implements OnInit {

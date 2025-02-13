@@ -1,7 +1,7 @@
-<section class="channel">
+<section *ngIf="channel" class="channel">
   <div class="header">
     <i class="pi pi-angle-left" (click)="goToBack()"></i>
-    <h1 *ngIf="channel">{{ channel.name }}</h1>
+    <h1>{{ channel.name }}</h1>
     <i class="pi pi-users"></i>
   </div>
 
