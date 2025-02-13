@@ -5,13 +5,13 @@ import { JwtService } from '../services/jwt.service';
 
 export function JwtInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
   const jwtService = inject(JwtService);
-  const token = jwtService.getToken();
+  const jwt = jwtService.getJwt();
 
   // Clonage de la requête avec l'en-tête Authorization
-  const modifiedReq = token
+  const modifiedReq = jwt
     ? req.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${jwt.token.token}`,
       },
     })
     : req;

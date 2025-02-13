@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
+import {JwtI} from '../models/jwt.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtService {
-  private TokenKey = 'token';
+  private jwtKey = 'jwt';
 
-  setToken(token: string): void {
-    localStorage.setItem(this.TokenKey, token);
+  setJwt(jwt: JwtI): void {
+    localStorage.setItem(this.jwtKey, JSON.stringify(jwt));
   }
 
-  getToken(): string | null {
-    return localStorage.getItem(this.TokenKey);
+  getJwt(): JwtI | null {
+    const jwtString = localStorage.getItem(this.jwtKey);
+    return jwtString ? JSON.parse(jwtString) : null;
   }
 
-  clearTokens(): void {
-    localStorage.removeItem(this.TokenKey);
+  clearJwt(): void {
+    localStorage.removeItem(this.jwtKey);
   }
 }

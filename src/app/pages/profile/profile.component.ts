@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
   logout() {
     return this.authService.logout().subscribe({
       next: () => {
-        this.jwtService.clearTokens();
+        this.jwtService.clearJwt();
         this.router.navigate(['/auth/login']);
         console.log('Déconnexion réussie');
       },

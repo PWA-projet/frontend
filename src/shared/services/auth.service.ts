@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.dev';
 import { AuthLoginI, AuthRegisterI, AuthUserI } from '../models/auth.model';
+import { JwtI } from '../models/jwt.model';
 import { JwtService } from "./jwt.service";
 
 @Injectable({
@@ -17,8 +18,8 @@ export class AuthService {
     return this.http.post<AuthRegisterI>(`${this.apiUrl}/register`, credentials);
   }
 
-  login(credentials: AuthLoginI): Observable<AuthRegisterI> {
-    return this.http.post<AuthRegisterI>(`${this.apiUrl}/login`, credentials);
+  login(credentials: AuthLoginI): Observable<JwtI> {
+    return this.http.post<JwtI>(`${this.apiUrl}/login`, credentials);
   }
 
   logout(): Observable<void> {
@@ -29,7 +30,8 @@ export class AuthService {
     return this.http.get<AuthUserI>(`${this.apiUrl}/me`);
   }
 
-  handleLoginResponse(response: any) {
-    this.JwtService.setToken(response.token.token);
+  handleLoginResponse(response: JwtI) {
+    // this.JwtService.setToken(response.token.token);
+    this.JwtService.setJwt(response);
   }
 }

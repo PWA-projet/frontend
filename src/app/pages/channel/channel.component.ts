@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
+import { JwtService } from '../../../shared/services/jwt.service';
 import { Card } from 'primeng/card';
 import { ActivatedRoute } from '@angular/router';
-import { Location, NgForOf, NgIf } from '@angular/common';
-import {MessageI} from '../../../shared/models/message.model';
+import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
+import { MessageI } from '../../../shared/models/message.model';
+import { JwtI } from '../../../shared/models/jwt.model';
 
 @Component({
   selector: 'app-channel',
@@ -13,6 +15,7 @@ import {MessageI} from '../../../shared/models/message.model';
     Card,
     NgIf,
     NgForOf,
+    NgClass,
   ],
   templateUrl: './channel.component.html',
   styleUrl: './channel.component.css'
@@ -20,20 +23,14 @@ import {MessageI} from '../../../shared/models/message.model';
 export class ChannelComponent implements OnInit {
   channel!: ChannelI;
   messages: MessageI[] = [];
-
-  // messages = [
-  //   { name: 'Alice', text: 'Bonjour tout le monde!' },
-  //   { name: 'Bob', text: 'Comment ça va ?' },
-  //   { name: 'Charlie', text: 'Ceci est un message test.' },
-  //   { name: 'David', text: 'Long message qui ne doit pas dépasser de la carte. Long message qui ne doit pas dépasser de la carte.' },
-  //   { name: 'Eve', text: 'Un autre message pour voir l’affichage.' }
-  // ];
+  currentUserId?: number;
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private channelService: ChannelService,
     private messageService: MessageService,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit() {
@@ -42,6 +39,8 @@ export class ChannelComponent implements OnInit {
       this.loadChannel(channelId);
       this.loadMessage(channelId);
     });
+    const jwt = this.jwtService.getJwt();
+    this.currentUserId = jwt?.id;
   }
 
   loadChannel(channelId: number) {
