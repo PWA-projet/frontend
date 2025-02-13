@@ -37,13 +37,27 @@ h1 {
 
 .message .card-content {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .message .card-content span {
-  font-size: 1.15rem;
+  font-size: 1rem;
   line-height: 1.25;
   flex-grow: 1;
+}
+
+.message .card-content .name {
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+.message .card-content .text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden;
 }
 
 /* Add Content */
@@ -102,6 +116,10 @@ h1 {
 
 /* Make the scrollbar visible in mobile browsers */
 @media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
   .message::-webkit-scrollbar {
     display: none;
   }

@@ -13,7 +13,7 @@
         type="text"
         pInputText
         variant="filled"
-        maxlength="25"
+        maxlength="20"
         formControlName="name"
       />
       <p-message *ngIf="createChannelForm.get('name')?.hasError('minlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au moins 3 caractères"></p-message>

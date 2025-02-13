@@ -33,7 +33,7 @@ export class CreateChannelComponent implements OnInit {
 
   ngOnInit(): void {
     this.createChannelForm = this.fb.group({
-        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
       },
     );
   }

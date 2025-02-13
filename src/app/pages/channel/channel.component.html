@@ -1,14 +1,15 @@
 <section class="channel">
   <div class="header">
     <i class="pi pi-angle-left" (click)="goToBack()"></i>
-    <h1>{{ channel.name }}</h1>
+    <h1 *ngIf="channel">{{ channel.name }}</h1>
     <i class="pi pi-users"></i>
   </div>
 
   <div class="message">
-    <p-card [style]="{ borderRadius: '1rem', cursor: 'pointer' }">
+    <p-card *ngFor="let msg of messages" [style]="{ borderRadius: '1rem' }">
       <div class="card-content">
-        <span>message.....</span>
+        <span class="name">{{ msg.name }}</span>
+        <span class="text">{{ msg.text }}</span>
       </div>
     </p-card>
   </div>
