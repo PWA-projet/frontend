@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { PrimeNG } from 'primeng/config';
 import { FilterMatchMode } from 'primeng/api';
-import { environment} from '../shared/environments/environment.prod';
+import { environment } from '../shared/environments/environment.prod';
 
 @Component({
   selector: 'app-root',
