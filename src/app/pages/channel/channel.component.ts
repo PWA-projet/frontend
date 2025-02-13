@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -7,7 +7,6 @@ import { Card } from 'primeng/card';
 import { ActivatedRoute } from '@angular/router';
 import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
 import { MessageI } from '../../../shared/models/message.model';
-import { JwtI } from '../../../shared/models/jwt.model';
 
 @Component({
   selector: 'app-channel',
