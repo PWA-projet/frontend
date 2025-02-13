@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -27,6 +27,7 @@ import { Button } from 'primeng/button';
   styleUrl: './channel.component.css'
 })
 export class ChannelComponent implements OnInit {
+  @ViewChild('messageContainer') private messageContainer!: ElementRef;
   channel!: ChannelI;
   messages: MessageI[] = [];
   currentUserId?: number;
@@ -64,11 +65,20 @@ export class ChannelComponent implements OnInit {
     this.messageService.index(channelId).subscribe({
       next: (data: MessageI[]) => {
         this.messages = data;
+        this.scrollToBottom();
       },
       error: (error: any) => {
         console.error('Error fetching channel:', error);
       }
     });
+  }
+
+  scrollToBottom(): void {
+    if (this.messageContainer) {
+      setTimeout(() => {
+        this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
+      }, 100);
+    }
   }
 
   goToBack(): void {
