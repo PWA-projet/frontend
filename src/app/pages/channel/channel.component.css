@@ -43,8 +43,8 @@ h1 {
   max-width: 100%;
 }
 
-.message .current-user-message {
-  color: red;
+.message .card .current-user-message {
+  color: var(--primary-color);
 }
 
 .message .card span {

@@ -7,13 +7,15 @@
 
   <div class="message">
     <p-card *ngFor="let msg of messages" [style]="{ borderRadius: '1rem' }">
-      <div class="card"
-           [ngClass]="{
-          'current-user-message': msg.author.id === currentUserId,
-          'other-user-message': msg.author.id !== currentUserId
-        }"
-      >
-        <span class="name">{{ msg.author.name }}</span>
+      <div class="card">
+        <span
+          class="name"
+          [ngClass]="{
+            'current-user-message': msg.author.id === currentUserId
+          }"
+        >
+          {{ msg.author.name }}
+        </span>
         <span class="content">{{ msg.content }}</span>
       </div>
     </p-card>
