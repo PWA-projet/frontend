@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -8,8 +8,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
 import { MessageI } from '../../../shared/models/message.model';
 import { InputText } from "primeng/inputtext";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Button } from 'primeng/button';
+import { JwtI } from '../../../shared/models/jwt.model';
 
 @Component({
   selector: 'app-channel',
@@ -21,6 +22,7 @@ import { Button } from 'primeng/button';
     InputText,
     ReactiveFormsModule,
     Button,
+    FormsModule,
   ],
   templateUrl: './channel.component.html',
   standalone: true,
@@ -28,9 +30,11 @@ import { Button } from 'primeng/button';
 })
 export class ChannelComponent implements OnInit {
   @ViewChild('messageContainer') private messageContainer!: ElementRef;
+
   channel!: ChannelI;
   messages: MessageI[] = [];
-  currentUserId?: number;
+  currentUser?: JwtI | null;
+  newMessageContent: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -46,8 +50,7 @@ export class ChannelComponent implements OnInit {
       this.loadChannel(channelId);
       this.loadMessage(channelId);
     });
-    const jwt = this.jwtService.getJwt();
-    this.currentUserId = jwt?.id;
+    this.currentUser = this.jwtService.getJwt();
   }
 
   loadChannel(channelId: number) {
@@ -71,6 +74,24 @@ export class ChannelComponent implements OnInit {
         console.error('Error fetching channel:', error);
       }
     });
+  }
+
+  sendMessage(channelId: number) {
+    if (!this.newMessageContent.trim()) return;
+
+    const newMessage: MessageI = {
+      channelId: channelId,
+      content: this.newMessageContent,
+      createdAt: new Date().toISOString(),
+      author: {
+        id: this.currentUser?.id!,
+        name: this.currentUser?.name!
+      }
+    };
+
+    this.messages.push(newMessage); // Ajoute au tableau local
+    this.scrollToBottom();
+    this.newMessageContent = '';
   }
 
   scrollToBottom(): void {

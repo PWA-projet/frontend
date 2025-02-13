@@ -11,7 +11,7 @@
         <span
           class="name"
           [ngClass]="{
-            'current-user-message': msg.author.id === currentUserId
+            'current-user-message': msg.author.id === currentUser?.id
           }"
         >
           {{ msg.author.name }}
@@ -25,10 +25,11 @@
     <input
       id="send"
       type="text"
+      [(ngModel)]="newMessageContent"
       pInputText
       variant="filled"
       placeholder="Envoyer un Chat"
     />
-    <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" />
+    <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
 </section>

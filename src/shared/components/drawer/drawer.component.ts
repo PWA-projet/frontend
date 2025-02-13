@@ -2,7 +2,7 @@ import { Component, HostListener, Input, OnChanges, Output, EventEmitter, Simple
 import { Card } from "primeng/card";
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
-import {APP_ROUTES} from '../../constants/routes';
+import { APP_ROUTES } from '../../constants/routes';
 
 @Component({
   selector: 'app-drawer',

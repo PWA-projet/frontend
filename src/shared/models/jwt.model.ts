@@ -7,5 +7,6 @@ export interface JwtI {
     expiresAt: string;
   };
   id: number;
+  name: string;
   email: string;
 }
