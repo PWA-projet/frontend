@@ -1,7 +1,7 @@
 <section *ngIf="channel" class="channel">
   <div class="header">
     <i class="pi pi-angle-left" (click)="goToBack()"></i>
-    <h2 [ngStyle]="{ 'font-size': getDynamicFontSize(channel.name) }">
+    <h2 [ngClass]="{ 'long-name': channel.name.length > 10 }">
       {{ channel.name }}
     </h2>
     <i class="pi pi-users"></i>
