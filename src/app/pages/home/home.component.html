@@ -5,7 +5,7 @@
   </div>
 
   <div class="channels">
-    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem', cursor: 'pointer' }" (click)="goToChannel(channel.id)">
+    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem' }" (click)="goToChannel(channel.id)">
       <div class="card">
         <i class="pi pi-users"></i>
         <span>{{ channel.name }}</span>

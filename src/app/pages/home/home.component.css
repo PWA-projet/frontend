@@ -16,7 +16,6 @@ h1 {
 
 .pi-user {
   font-size: 1.5rem;
-  cursor: pointer;
 }
 
 /* Channel */
@@ -69,7 +68,6 @@ h1 {
 .add-content .pi-plus-circle {
   font-size: 3.5rem;
   color: var(--primary-color);
-  cursor: pointer;
 }
 
 .add-content span {
