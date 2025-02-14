@@ -72,3 +72,9 @@
   font-size: 1.15rem;
   color: gray;
 }
+
+@media screen and (max-width: 768px) {
+  .drawer .card-content span {
+    font-size: 1rem;
+  }
+}

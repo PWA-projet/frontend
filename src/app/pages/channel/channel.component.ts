@@ -5,7 +5,7 @@ import { MessageService } from '../../../shared/services/message.service';
 import { JwtService } from '../../../shared/services/jwt.service';
 import { Card } from 'primeng/card';
 import { ActivatedRoute } from '@angular/router';
-import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
+import {Location, NgClass, NgForOf, NgIf, NgStyle} from '@angular/common';
 import { MessageI } from '../../../shared/models/message.model';
 import { InputText } from "primeng/inputtext";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -23,6 +23,7 @@ import { JwtI } from '../../../shared/models/jwt.model';
     ReactiveFormsModule,
     Button,
     FormsModule,
+    NgStyle,
   ],
   templateUrl: './channel.component.html',
   standalone: true,
@@ -92,6 +93,15 @@ export class ChannelComponent implements OnInit {
     this.messages.push(newMessage); // Ajoute au tableau local
     this.scrollToBottom();
     this.newMessageContent = '';
+  }
+
+  getDynamicFontSize(name: string): string {
+    const length = name.length;
+     if (length > 10) {
+      return '1rem';
+    } else {
+      return '2rem';
+    }
   }
 
   scrollToBottom(): void {

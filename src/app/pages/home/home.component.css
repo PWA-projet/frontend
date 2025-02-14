@@ -105,6 +105,10 @@ h1 {
 
 /* Make the scrollbar visible in mobile browsers */
 @media screen and (max-width: 768px) {
+  .channels .card span {
+    font-size: 1rem;
+  }
+
   .channels::-webkit-scrollbar {
     display: none;
   }
