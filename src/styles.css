@@ -30,7 +30,7 @@ section {
 /* Application d'un fond sombre si l'utilisateur a un mode sombre système */
 @media (prefers-color-scheme: dark) {
   :root {
-    --mode-color: #09090b;
+    --mode-color: #000000;
     --primary-color: #3b82f6;
     --green-color: #16a34a;
     --text-color: #a1a1a1;
