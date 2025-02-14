@@ -67,7 +67,7 @@ h2 {
 
 /* Add Content */
 .send-message {
-  position: sticky;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -75,7 +75,7 @@ h2 {
   flex-direction: row;
   gap: 1rem;
   align-items: center;
-  padding: 0.8rem 0;
+  padding: 0.8rem 1.5rem;
   background: var(--mode-color);
   z-index: 10;
 }
@@ -109,6 +109,12 @@ h2 {
 
 .message::-webkit-scrollbar-button {
   display: none;
+}
+
+@media screen and (min-width: 1300px) {
+  .send-message {
+    padding: 0.8rem 6rem;
+  }
 }
 
 /* Make the scrollbar visible in mobile browsers */
