@@ -6,7 +6,13 @@ body {
 }
 
 section {
-  padding: 0 1.5rem;
+  padding: 0 6rem;
+}
+
+@media screen and (max-width: 1300px) {
+  section {
+    padding: 0 1.5rem;
+  }
 }
 
 /* Application d'un fond clair si l'utilisateur a un mode clair système */
