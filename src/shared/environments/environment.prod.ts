@@ -1,4 +1,4 @@
-let Host = 'https://keychat-api.thibaut009.com/';
+let Host = 'https://keychat-api.thibaut009.com';
 
 export const environment = {
   production: true,
