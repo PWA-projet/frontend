@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthUserI } from '../../../shared/models/auth.model';
 import { AuthService } from '../../../shared/services/auth.service';
 import { JwtService } from '../../../shared/services/jwt.service';
+import { CacheService } from '../../../shared/services/cache.service';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Button } from 'primeng/button';
@@ -22,6 +23,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private jwtService: JwtService,
+    private cacheService: CacheService,
     private router: Router
   ) {}
 
@@ -38,6 +40,7 @@ export class ProfileComponent implements OnInit {
     return this.authService.logout().subscribe({
       next: () => {
         this.jwtService.clearJwt();
+        this.cacheService.clearAll();
         this.router.navigate(['/auth/login']);
         console.log('Déconnexion réussie');
       },
