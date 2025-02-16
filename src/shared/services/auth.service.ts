@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {Observable, tap} from 'rxjs';
+import {Observable, Subject, tap} from 'rxjs';
 import { environment } from '../environments/environment.dev';
 import { AuthLoginI, AuthRegisterI, AuthUserI } from '../models/auth.model';
 import { JwtI } from '../models/jwt.model';
 import { JwtService } from "./jwt.service";
-import {globalCacheBusterNotifier} from 'ts-cacheable';
+import { Cacheable, globalCacheBusterNotifier } from 'ts-cacheable';
+
+const cacheBuster$ = new Subject<void>();
 
 @Injectable({
   providedIn: 'root',
@@ -32,6 +34,7 @@ export class AuthService {
     );
   }
 
+  @Cacheable({ cacheBusterObserver: cacheBuster$ })
   me(): Observable<AuthUserI> {
     return this.http.get<AuthUserI>(`${this.apiUrl}/me`);
   }
