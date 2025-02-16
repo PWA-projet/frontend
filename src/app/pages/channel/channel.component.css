@@ -10,7 +10,7 @@
 }
 
 .pi-angle-left {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 h2 {
@@ -23,7 +23,7 @@ h2 {
 }
 
 .pi-users {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 /* Channel */
@@ -120,7 +120,7 @@ h2 {
 /* Make the scrollbar visible in mobile browsers */
 @media screen and (max-width: 768px) {
   .header {
-    padding: 1.5rem 0;
+    padding: 1rem 0;
   }
 
   h2.long-name {

@@ -31,23 +31,27 @@ h1 {
 .channels .card {
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 0 0.5rem 0 1rem;
 }
 
 .channels .card .pi-users {
   font-size: 2em;
-  padding-right: 1rem;
+  margin-right: 1rem;
 }
 
 .channels .card span {
   font-size: 1.15rem;
   line-height: 1.25;
   flex-grow: 1;
+  text-align: left;
 }
 
 .channels .card .pi-angle-right {
   font-size: 1.15rem;
-  color: var(--text-color);;
+  color: var(--text-color);
 }
+
 
 /* Add Content */
 .add-content {

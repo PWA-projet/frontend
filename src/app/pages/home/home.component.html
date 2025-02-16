@@ -1,17 +1,24 @@
 <section class="home">
   <div class="header">
     <h1>KeyChat</h1>
-    <i class="pi pi-user" (click)="goToProfile()"></i>
+    <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToProfile()">
+      <i class="pi pi-user"></i>
+    </p-button>
   </div>
 
   <div class="channels">
-    <p-card *ngFor="let channel of channels" [style]="{ borderRadius: '1rem' }" (click)="goToChannel(channel.id)">
+    <p-button
+      *ngFor="let channel of channels"
+      severity="secondary"
+      [style]="{ width: '100%', height: '5rem', borderRadius: '1rem' }"
+      (click)="goToChannel(channel.id)"
+    >
       <div class="card">
         <i class="pi pi-users"></i>
         <span>{{ channel.name }}</span>
         <i class="pi pi-angle-right"></i>
       </div>
-    </p-card>
+    </p-button>
   </div>
 
   <div class="add-content">

@@ -60,12 +60,15 @@
 .drawer .card-content {
   display: flex;
   align-items: center;
+  width: 100%;
+  padding: 0 0.5rem 0 1rem;
 }
 
 .drawer .card-content span {
   font-size: 1.15rem;
   line-height: 1.25;
   flex-grow: 1;
+  text-align: left;
 }
 
 .drawer .card-content .pi-angle-right {

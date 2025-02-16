@@ -6,6 +6,7 @@ import { ChannelService}  from '../../../shared/services/channel.service';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../../shared/constants/routes';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-home',
@@ -13,6 +14,7 @@ import { APP_ROUTES } from '../../../shared/constants/routes';
     Card,
     NgForOf,
     DrawerComponent,
+    Button,
   ],
   templateUrl: './home.component.html',
   standalone: true,
