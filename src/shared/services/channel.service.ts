@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../environments/environment.dev';
 import { ChannelI } from '../models/channel.model';
-import { Cacheable, CacheBuster } from 'ts-cacheable';
-
-const cacheBuster$ = new Subject<void>();
+import { Cacheable, CacheBuster, LocalStorageStrategy } from 'ts-cacheable';
+import { cacheBuster$, CACHE_MAX_AGE } from '../constants/cache';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +14,7 @@ export class ChannelService {
 
   constructor(private http: HttpClient) {}
 
-  @Cacheable({ cacheBusterObserver: cacheBuster$ })
+  @Cacheable({ cacheBusterObserver: cacheBuster$, storageStrategy: LocalStorageStrategy, maxAge: CACHE_MAX_AGE })
   index(): Observable<ChannelI[]> {
     return this.http.get<ChannelI[]>(`${this.apiUrl}`);
   }
@@ -25,7 +24,7 @@ export class ChannelService {
     return this.http.post<ChannelI>(`${this.apiUrl}`, channel);
   }
 
-  @Cacheable({ cacheBusterObserver: cacheBuster$})
+  @Cacheable({ cacheBusterObserver: cacheBuster$, storageStrategy: LocalStorageStrategy, maxAge: CACHE_MAX_AGE })
   show(id: number): Observable<ChannelI> {
     return this.http.get<ChannelI>(`${this.apiUrl}/${id}`);
   }
