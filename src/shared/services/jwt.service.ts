@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {JwtI} from '../models/jwt.model';
+import { JwtI } from '../models/jwt.model';
 
 @Injectable({
   providedIn: 'root'

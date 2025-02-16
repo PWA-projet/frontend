@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, tap} from 'rxjs';
 import { environment } from '../environments/environment.dev';
 import { AuthLoginI, AuthRegisterI, AuthUserI } from '../models/auth.model';
 import { JwtI } from '../models/jwt.model';
 import { JwtService } from "./jwt.service";
+import {globalCacheBusterNotifier} from 'ts-cacheable';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,12 @@ export class AuthService {
   }
 
   logout(): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/logout`);
+    return this.http.delete<void>(`${this.apiUrl}/logout`).pipe(
+      tap(() => {
+        globalCacheBusterNotifier.next(); // Bust cache globally
+        this.JwtService.clearJwt(); // Clear jwt after logout
+      })
+    );
   }
 
   me(): Observable<AuthUserI> {
@@ -31,7 +37,6 @@ export class AuthService {
   }
 
   handleLoginResponse(response: JwtI) {
-    // this.JwtService.setToken(response.token.token);
     this.JwtService.setJwt(response);
   }
 }
