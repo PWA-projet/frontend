@@ -4,13 +4,14 @@ import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
 import { JwtService } from '../../../shared/services/jwt.service';
 import { Card } from 'primeng/card';
-import { ActivatedRoute } from '@angular/router';
-import { Location, NgClass, NgForOf, NgIf } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { MessageI } from '../../../shared/models/message.model';
 import { InputText } from "primeng/inputtext";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Button } from 'primeng/button';
 import { JwtI } from '../../../shared/models/jwt.model';
+import { APP_ROUTES } from '../../../shared/constants/routes';
 
 @Component({
   selector: 'app-channel',
@@ -38,7 +39,7 @@ export class ChannelComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
+    private router: Router,
     private channelService: ChannelService,
     private messageService: MessageService,
     private jwtService: JwtService
@@ -102,7 +103,7 @@ export class ChannelComponent implements OnInit {
     }
   }
 
-  goToBack(): void {
-    this.location.back();
+  goToHome() {
+    this.router.navigate([APP_ROUTES.HOME]);
   }
 }

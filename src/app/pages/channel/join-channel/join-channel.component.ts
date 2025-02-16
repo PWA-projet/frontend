@@ -66,10 +66,6 @@ export class JoinChannelComponent implements OnInit {
     }
   }
 
-  goToBack(): void {
-    this.location.back();
-  }
-
   goToHome() {
     this.router.navigate([APP_ROUTES.HOME]);
   }

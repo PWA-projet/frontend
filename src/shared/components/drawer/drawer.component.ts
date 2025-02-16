@@ -1,6 +1,5 @@
 import { Component, HostListener, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
-import { Card } from "primeng/card";
-import {NgClass, NgForOf} from '@angular/common';
+import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../constants/routes';
 import {Button} from 'primeng/button';
@@ -9,10 +8,8 @@ import {Button} from 'primeng/button';
   selector: 'app-drawer',
   templateUrl: './drawer.component.html',
   imports: [
-    Card,
     NgClass,
     Button,
-    NgForOf
   ],
   styleUrls: ['./drawer.component.css']
 })

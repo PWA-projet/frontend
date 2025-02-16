@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Location, NgIf} from '@angular/common';
+import { Location, NgIf } from '@angular/common';
 import { InputText } from "primeng/inputtext";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ChannelService } from '../../../../shared/services/channel.service';
@@ -7,7 +7,7 @@ import { ChannelI } from '../../../../shared/models/channel.model';
 import { Button } from 'primeng/button';
 import { APP_ROUTES } from '../../../../shared/constants/routes';
 import { Router } from '@angular/router';
-import {Message} from 'primeng/message';
+import { Message } from 'primeng/message';
 
 @Component({
   selector: 'app-create-channel',
@@ -53,10 +53,6 @@ export class CreateChannelComponent implements OnInit {
     } else {
       console.error('Form is invalid');
     }
-  }
-
-  goToBack(): void {
-    this.location.back();
   }
 
   goToHome() {

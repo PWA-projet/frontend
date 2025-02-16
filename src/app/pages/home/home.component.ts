@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Card } from 'primeng/card';
 import { NgForOf } from '@angular/common';
 import { DrawerComponent } from '../../../shared/components/drawer/drawer.component';
 import { ChannelService}  from '../../../shared/services/channel.service';
@@ -11,7 +10,6 @@ import { Button } from 'primeng/button';
 @Component({
   selector: 'app-home',
   imports: [
-    Card,
     NgForOf,
     DrawerComponent,
     Button,
