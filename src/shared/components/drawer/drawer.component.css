@@ -19,7 +19,7 @@
 /* Drawer */
 .drawer {
   position: fixed;
-  bottom: 0;
+  bottom: -100%;
   left: 0;
   width: 100%;
   display: flex;
@@ -27,8 +27,23 @@
   gap: 0.5rem;
   padding: 0.5rem;
   z-index: 9999;
-  transition: bottom 0.3s ease-in-out;
+  transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
   background: var(--mode-color);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.drawer.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer-open {
+  bottom: 0;
+}
+
+.drawer-closed {
+  bottom: -100%;
 }
 
 .drawer .pi-plus-circle,
@@ -43,14 +58,6 @@
 
 .drawer .pi-link {
   color: var(--green-color);
-}
-
-.drawer-open {
-  bottom: 0;
-}
-
-.drawer-closed {
-  bottom: -100%;
 }
 
 .drawer .page-no-interactions {

@@ -1,8 +1,8 @@
-import { Component, HostListener, Input, OnChanges, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Component, HostListener, Input, OnChanges, OnInit, Output, EventEmitter, SimpleChanges } from '@angular/core';
 import { NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../constants/routes';
-import {Button} from 'primeng/button';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-drawer',
@@ -13,21 +13,27 @@ import {Button} from 'primeng/button';
   ],
   styleUrls: ['./drawer.component.css']
 })
-export class DrawerComponent implements OnChanges {
+export class DrawerComponent implements OnInit, OnChanges {
   @Input() visible: boolean = false;
-  @Output() visibleChange = new EventEmitter<boolean>(); // Emit visibility change
+  @Output() visibleChange = new EventEmitter<boolean>();
 
-  constructor(
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    setTimeout(() => {
+      const drawer = document.querySelector('.drawer');
+      if (drawer) {
+        drawer.classList.add('visible');
+      }
+    }, 0);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['visible']) {
-      this.toggleOverlay();  // Adjust the dark background
+      this.toggleOverlay();
     }
   }
 
-  // Handle the display of the dark background and interaction
   toggleOverlay() {
     const overlay = document.querySelector('.page-overlay');
     const body = document.body;
@@ -41,17 +47,15 @@ export class DrawerComponent implements OnChanges {
     }
   }
 
-  // Close the drawer if clicking outside
   @HostListener('document:click', ['$event'])
   onClickOutside(event: MouseEvent) {
     const drawerElement = document.querySelector('.drawer');
     const addContentElement = document.querySelector('.add-content');
 
-    // If the click is outside the drawer and the "add content" button, close the drawer
     if (this.visible && !drawerElement?.contains(event.target as Node) && !addContentElement?.contains(event.target as Node)) {
       this.visible = false;
-      this.visibleChange.emit(this.visible); // Emit the updated visibility state
-      this.toggleOverlay();  // Update the dark background state
+      this.visibleChange.emit(this.visible);
+      this.toggleOverlay();
     }
   }
 
