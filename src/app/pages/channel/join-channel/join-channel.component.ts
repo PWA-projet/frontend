@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InputText } from 'primeng/inputtext';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Button } from 'primeng/button';
-import { Location, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ChannelService } from '../../../../shared/services/channel.service';
 import { APP_ROUTES } from '../../../../shared/constants/routes';
 import { Router } from '@angular/router';
@@ -29,7 +29,6 @@ export class JoinChannelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private channelService: ChannelService,
-    private location: Location,
     private router: Router
   ) {}
 

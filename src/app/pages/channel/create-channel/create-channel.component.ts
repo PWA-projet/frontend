@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Location, NgIf } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { InputText } from "primeng/inputtext";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ChannelService } from '../../../../shared/services/channel.service';
@@ -28,7 +28,6 @@ export class CreateChannelComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private channelService: ChannelService,
-    private location: Location,
     private router: Router
   ) {}
 
