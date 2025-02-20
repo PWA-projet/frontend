@@ -6,6 +6,7 @@ import { ChannelI } from '../../../shared/models/channel.model';
 import { Router } from '@angular/router';
 import { APP_ROUTES } from '../../../shared/constants/routes';
 import { Button } from 'primeng/button';
+import { HomeSkeletonComponent } from '../../../shared/components/skeletons/home-skeleton/home-skeleton.component';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,7 @@ import { Button } from 'primeng/button';
     DrawerComponent,
     Button,
     NgIf,
+    HomeSkeletonComponent,
   ],
   templateUrl: './home.component.html',
   standalone: true,

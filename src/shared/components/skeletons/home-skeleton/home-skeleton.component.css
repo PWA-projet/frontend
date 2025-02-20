@@ -1,0 +1,66 @@
+.home-skeleton {
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 150px);
+  padding-bottom: 100px;
+}
+
+.add-content {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  padding: 0.75rem;
+  background: var(--mode-color);
+  filter: drop-shadow(0 -6mm 4mm var(--mode-color));
+  z-index: 10;
+}
+
+/* Webkit scrollbar for Chrome, Safari, and Edge */
+.channels::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.channels::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.channels::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+
+.channels::-webkit-scrollbar-thumb:hover {
+  background-color: var(--primary-color);
+}
+
+.channels::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Make the scrollbar visible in mobile browsers */
+@media screen and (max-width: 768px) {
+  .channels::-webkit-scrollbar {
+    display: none;
+  }
+}

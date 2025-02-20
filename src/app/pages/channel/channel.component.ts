@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { Button } from 'primeng/button';
 import { JwtI } from '../../../shared/models/jwt.model';
 import { APP_ROUTES } from '../../../shared/constants/routes';
+import { ChannelSkeletonComponent } from '../../../shared/components/skeletons/channel-skeleton/channel-skeleton.component';
 
 @Component({
   selector: 'app-channel',
@@ -23,7 +24,8 @@ import { APP_ROUTES } from '../../../shared/constants/routes';
     InputText,
     ReactiveFormsModule,
     Button,
-    FormsModule
+    FormsModule,
+    ChannelSkeletonComponent
   ],
   templateUrl: './channel.component.html',
   standalone: true,

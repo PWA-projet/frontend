@@ -30,4 +30,5 @@
   <app-drawer [visible]="visible" (visibleChange)="visible = $event" />
 </section>
 
+<app-home-skeleton *ngIf="isLoading" />
 
