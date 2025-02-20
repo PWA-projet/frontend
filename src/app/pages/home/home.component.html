@@ -1,4 +1,4 @@
-<section class="home">
+<section class="home" *ngIf="!isLoading">
   <div class="header">
     <h1>KeyChat</h1>
     <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToProfile()">
@@ -25,7 +25,9 @@
     <i class="pi pi-plus-circle" (click)="toggleDrawer()"></i>
     <span>Ajouter un channel</span>
   </div>
+
+  <!-- Passing visible status from HomeComponent to DrawerComponent -->
+  <app-drawer [visible]="visible" (visibleChange)="visible = $event" />
 </section>
 
-<!-- Passing visible status from HomeComponent to DrawerComponent -->
-<app-drawer [visible]="visible" (visibleChange)="visible = $event" />
+

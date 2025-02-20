@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { DrawerComponent } from '../../../shared/components/drawer/drawer.component';
 import { ChannelService}  from '../../../shared/services/channel.service';
 import { ChannelI } from '../../../shared/models/channel.model';
@@ -13,6 +13,7 @@ import { Button } from 'primeng/button';
     NgForOf,
     DrawerComponent,
     Button,
+    NgIf,
   ],
   templateUrl: './home.component.html',
   standalone: true,
@@ -21,13 +22,14 @@ import { Button } from 'primeng/button';
 export class HomeComponent implements OnInit {
   visible: boolean = false;
   channels: ChannelI[] = [];
+  isLoading: boolean = true;
 
   constructor(
     private channelService: ChannelService,
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.loadChannel();
   }
 
@@ -37,7 +39,10 @@ export class HomeComponent implements OnInit {
         this.channels = data;
       },
       error: (error: any) => {
-        console.error('Error fetching channel:', error);
+        console.error('Error fetching channels:', error);
+      },
+      complete: () => {
+        this.isLoading = false;  // Arrête le chargement à la fin
       }
     });
   }

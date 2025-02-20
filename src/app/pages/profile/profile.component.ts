@@ -4,6 +4,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Button } from 'primeng/button';
+import {APP_ROUTES} from '../../../shared/constants/routes';
 
 @Component({
   selector: 'app-profile',
@@ -17,6 +18,7 @@ import { Button } from 'primeng/button';
 })
 export class ProfileComponent implements OnInit {
   auth!: AuthUserI;
+  isLoading: boolean = true;
 
   constructor(
     private authService: AuthService,
@@ -24,11 +26,20 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loadProfile();
+  }
+
+  loadProfile() {
     this.authService.me().subscribe({
       next: (response) => {
         this.auth = response;
       },
-      error: (error) => console.error('Failed to fetch user profile:', error)
+      error: (error: any) => {
+        console.error('Failed to fetch user profile:', error);
+      },
+      complete: () => {
+        this.isLoading = false;  // Arrête le chargement à la fin
+      }
     });
   }
 
@@ -40,5 +51,9 @@ export class ProfileComponent implements OnInit {
       },
       error: (error) => console.error('Erreur lors de la déconnexion', error)
     });
+  }
+
+  goToHome() {
+    this.router.navigate([APP_ROUTES.HOME]);
   }
 }

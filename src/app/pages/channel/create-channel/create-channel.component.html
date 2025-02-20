@@ -1,4 +1,4 @@
-<section class="create-channel">
+<section class="create-channel" *ngIf="!isLoading">
   <div class="header">
     <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToHome()">
       <i class="pi pi-angle-left"></i>
@@ -19,7 +19,7 @@
         formControlName="name"
       />
       <p-message *ngIf="createChannelForm.get('name')?.hasError('minlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au moins 3 caractères"></p-message>
-      <p-message *ngIf="createChannelForm.get('name')?.hasError('maxlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au maximum 25 caractères"></p-message>
+      <p-message *ngIf="createChannelForm.get('name')?.hasError('maxlength') && createChannelForm.get('name')?.touched" severity="error" text="Le nom doit contenir au maximum 15 caractères"></p-message>
     </div>
 
     <div class="form-actions">

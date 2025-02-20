@@ -25,6 +25,7 @@ import { Message } from 'primeng/message';
 export class JoinChannelComponent implements OnInit {
   joinChannelForm!: FormGroup;
   channelNotFound: boolean = false;
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -49,6 +50,7 @@ export class JoinChannelComponent implements OnInit {
   joinChannel() {
     if (this.joinChannelForm.valid) {
       const key: string = this.joinChannelForm.value;
+      this.isLoading = true; // Activation du chargement
 
       this.channelService.join(key).subscribe({
         next: (response) => {
@@ -57,7 +59,10 @@ export class JoinChannelComponent implements OnInit {
         },
         error: (error) => {
           console.error('Channel join failed:', error);
-          this.channelNotFound = true; // Active le message d'erreur si la clé est incorrecte
+          this.channelNotFound = true;
+        },
+        complete: () => {
+          this.isLoading = false;  // Arrête le chargement à la fin
         }
       });
     } else {

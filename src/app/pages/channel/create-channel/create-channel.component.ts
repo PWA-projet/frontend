@@ -24,6 +24,7 @@ import { Message } from 'primeng/message';
 })
 export class CreateChannelComponent implements OnInit {
   createChannelForm!: FormGroup;
+  isLoading: boolean = false;  // Ajout de l'état de chargement
 
   constructor(
     private fb: FormBuilder,
@@ -33,21 +34,26 @@ export class CreateChannelComponent implements OnInit {
 
   ngOnInit(): void {
     this.createChannelForm = this.fb.group({
-        name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
-      },
-    );
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+    });
   }
 
   createChannel() {
     if (this.createChannelForm.valid) {
       const newChannel: ChannelI = this.createChannelForm.value;
+      this.isLoading = true;
 
       this.channelService.create(newChannel).subscribe({
         next: (response) => {
           console.log("Channel successfully created : ", response.name);
           this.goToHome();
         },
-        error: (error) => console.error('Channel create failed:', error)
+        error: (error) => {
+          console.error('Channel create failed:', error);
+        },
+        complete: () => {
+          this.isLoading = false;  // Arrête le chargement à la fin
+        }
       });
     } else {
       console.error('Form is invalid');
