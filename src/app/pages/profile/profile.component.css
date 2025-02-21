@@ -8,3 +8,51 @@
 .pi-angle-left {
   font-size: 1.5rem;
 }
+
+.user {
+  max-width: 600px;
+  margin: auto;
+}
+
+.infos {
+  margin: 4rem 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.infos .pi-user {
+  font-size: 6rem;
+  padding: 2rem;
+  background: var(--primary-color);
+  color: var(--mode-color);
+  border-radius: 100%;
+}
+
+.infos h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .infos {
+    margin: 4rem auto 2rem;
+    max-width: 200px;
+  }
+
+  .infos .pi-user {
+    font-size: 3rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .infos h2 {
+    font-size: 1.5rem;
+  }
+}

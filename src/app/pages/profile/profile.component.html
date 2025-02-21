@@ -5,10 +5,23 @@
     </p-button>
   </div>
 
-  <div *ngIf="auth">
-    <p>Name : {{ auth.name }}</p>
-    <p>Email : {{ auth.email }}</p>
-    <p-button severity="danger" label="Logout" (click)="logout()" />
+  <div class="user">
+    <div class="infos" *ngIf="auth">
+      <div class="user-img">
+        <i class="pi pi-user"></i>
+      </div>
+      <h2>{{ auth.name }}</h2>
+      <p-button label="Modifier le Profile" [style]="{ width: '100%' }" />
+    </div>
+
+    <p-divider layout="horizontal" />
+
+    <div class="buttons">
+      <p-button severity="secondary" label="Paramètres" [style]="{ width: '100%' }" />
+      <p-button severity="secondary" label="Informations" [style]="{ width: '100%' }" />
+      <p-button severity="danger" label="Se déconnecter" [style]="{ width: '100%' }" (click)="logout()" />
+    </div>
   </div>
-  <p *ngIf="!auth">No auth found.</p>
 </section>
+
+<p *ngIf="!auth">No auth found.</p>

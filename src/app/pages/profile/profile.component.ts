@@ -5,12 +5,14 @@ import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
 import { Button } from 'primeng/button';
 import {APP_ROUTES} from '../../../shared/constants/routes';
+import {Divider} from 'primeng/divider';
 
 @Component({
   selector: 'app-profile',
   imports: [
     NgIf,
-    Button
+    Button,
+    Divider
   ],
   templateUrl: './profile.component.html',
   standalone: true,
