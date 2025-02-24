@@ -8,15 +8,15 @@ import { MessageI } from '../models/message.model';
   providedIn: 'root',
 })
 export class MessageService {
-  private apiUrl = `${environment.apiUrl}/message`;
+  private apiUrl = `${environment.apiUrl}/channel`;
 
   constructor(private http: HttpClient) {}
 
   index(channelId: number): Observable<MessageI[]> {
-    return this.http.get<MessageI[]>(`${this.apiUrl}?channelId=${channelId}`);
+    return this.http.get<MessageI[]>(`${this.apiUrl}/${channelId}/message`);
   }
 
-  store(message: MessageI): Observable<MessageI> {
-    return this.http.post<MessageI>(`${this.apiUrl}`, message);
+  store(channelId: string, message: MessageI): Observable<MessageI> {
+    return this.http.post<MessageI>(`${this.apiUrl}/${channelId}/message`, message);
   }
 }
