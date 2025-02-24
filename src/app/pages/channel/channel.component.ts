@@ -3,6 +3,7 @@ import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
 import { JwtService } from '../../../shared/services/jwt.service';
+import { SocketService } from '../../../shared/services/socket.service';
 import { Card } from 'primeng/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
@@ -44,7 +45,8 @@ export class ChannelComponent implements OnInit {
     private router: Router,
     private channelService: ChannelService,
     private messageService: MessageService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private socketService: SocketService
   ) {}
 
   ngOnInit() {
@@ -52,7 +54,20 @@ export class ChannelComponent implements OnInit {
       const channelId = params['id'];
       this.loadChannel(channelId);
       this.loadMessage(channelId);
+
+      // Joindre le canal via WebSocket
+      this.socketService.joinChannel(channelId);
+
+      // Écouter les nouveaux messages via WebSocket
+      this.socketService.receiveMessages().subscribe((message: MessageI) => {
+        console.log('Received message', message);
+        if (message.channelId === channelId) {
+          this.messages.push(message);  // Ajouter le nouveau message au tableau local
+          this.scrollToBottom();  // Faire défiler vers le bas
+        }
+      });
     });
+
     this.currentUser = this.jwtService.getJwt();
   }
 
@@ -92,8 +107,9 @@ export class ChannelComponent implements OnInit {
       }
     };
 
-    this.messages.push(newMessage); // Ajoute au tableau local
-    this.scrollToBottom();
+    this.socketService.sendMessage(newMessage); // Envoyer le message via Socket.io
+    this.messages.push(newMessage);  // Ajouter le nouveau message au tableau local
+    this.scrollToBottom();  // Faire défiler vers le bas
     this.newMessageContent = '';
   }
 
