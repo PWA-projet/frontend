@@ -12,6 +12,9 @@ export class SocketService {
 
   constructor() {
     this.socket = io(environment.apiUrl);
+    this.socket.on('connect', () => {
+      console.log('Connected to WebSocket server!');
+    });
   }
 
   /**
@@ -28,6 +31,7 @@ export class SocketService {
   receiveMessages(): Observable<any> {
     return new Observable(observer => {
       this.socket.on('newMessage', (message) => {
+        console.log('Received message:', message);
         observer.next(message);
       });
     });
