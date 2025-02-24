@@ -26,7 +26,7 @@ export class SocketService {
     });
   }
 
-  newChannelMessage(createMessageDto: MessageI): void {
+  sendMessage(createMessageDto: MessageI): void {
     this.socket.emit('newMessage', createMessageDto);
   }
 }
