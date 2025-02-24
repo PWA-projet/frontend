@@ -59,9 +59,10 @@ export class ChannelComponent implements OnInit {
       this.socketService.joinChannel(channelId);
 
       // Écouter les nouveaux messages via WebSocket
-      this.socketService.receiveMessages().subscribe((message: MessageI) => {
+      this.socketService.receiveMessages().subscribe((message) => {
         console.log('Received message', message);
         if (message.channelId === channelId) {
+          console.log('channelId : ', channelId);
           this.messages.push(message);  // Ajouter le nouveau message au tableau local
           this.scrollToBottom();  // Faire défiler vers le bas
         }
@@ -107,9 +108,10 @@ export class ChannelComponent implements OnInit {
       }
     };
 
-    this.socketService.sendMessage(newMessage); // Envoyer le message via Socket.io
-    this.messages.push(newMessage);  // Ajouter le nouveau message au tableau local
-    this.scrollToBottom();  // Faire défiler vers le bas
+    this.socketService.sendMessage(newMessage);
+
+    this.messages.push(newMessage);
+    this.scrollToBottom();
     this.newMessageContent = '';
   }
 
