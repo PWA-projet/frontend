@@ -1,29 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
 import { environment } from '../environments/environment.dev';
-import io from 'socket.io-client';
+import { Observable } from 'rxjs';
+import { MessageI } from '../models/message.model';
+import io, { Socket } from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SocketService {
-  private socket: any;
-  private messageSubject: Subject<any> = new Subject<any>();
+  private socket: Socket;
 
   constructor() {
-    this.socket = io(environment.apiUrl); // L'URL de ton serveur (ex: 'http://localhost:3000')
+    this.socket = io(environment.apiUrl);
   }
 
-  // S'abonner aux messages en temps réel
-  subscribeToMessages(channelId: number) {
-    this.socket.emit('join', { channelId }); // Demande au serveur d'abonner ce client à ce canal
-    this.socket.on(`message/${channelId}`, (message: any) => {
-      this.messageSubject.next(message); // Envoie le message au flux observable
+  joinChannel(channelId: string): void {
+    this.socket.emit('joinChannel', channelId);
+  }
+
+  receiveMessages(): Observable<MessageI> {
+    return new Observable(observer => {
+      this.socket.on('newMessage', (message) => {
+        observer.next(message);
+      });
     });
   }
 
-  // Obtenir les messages en temps réel
-  getMessages(): Subject<any> {
-    return this.messageSubject;
+  newChannelMessage(createMessageDto: MessageI): void {
+    this.socket.emit('newMessage', createMessageDto);
   }
 }
