@@ -1,0 +1,91 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+form {
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Labels des champs de formulaire */
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333333;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Champs de saisie */
+input[type="text"], .p-password input {
+  width: 100%;
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus, .p-password input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Boutons */
+.p-button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.p-button[type="submit"] {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.p-button[type="button"] {
+  background-color: #f0f0f0;
+  color: #333333;
+  border-color: #ddd;
+}
+
+.p-button[type="submit"]:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.p-button[type="button"]:hover {
+  background-color: #e6e6e6;
+  border-color: #ccc;
+}
+
+/* Zone d'actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Message de validation pour le mot de passe */
+.p-password {
+  width: 100%;
+}
+
+.p-password .p-inputtext {
+  padding-right: 30px; /* pour l'icône toggle */
+}
+
+.p-password-info {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
