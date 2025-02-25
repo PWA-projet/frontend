@@ -73,7 +73,7 @@ export class ChannelComponent implements OnInit {
     this.currentUser = this.jwtService.getJwt();
   }
 
-  loadChannel(channelId: number) {
+  loadChannel(channelId: string) {
     this.channelService.show(channelId).subscribe({
       next: (data: ChannelI) => {
         this.channel = data;
@@ -84,7 +84,7 @@ export class ChannelComponent implements OnInit {
     });
   }
 
-  loadMessage(channelId: number) {
+  loadMessage(channelId: string) {
     this.messageService.index(channelId).subscribe({
       next: (data: MessageI[]) => {
         this.messages = data;

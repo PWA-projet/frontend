@@ -27,7 +27,7 @@ export class ChannelService {
   @Cacheable({ cacheBusterObserver: cacheBuster$, storageStrategy: LocalStorageStrategy, maxAge: CACHE_MAX_AGE,
     maxCacheCount: 50,
   })
-  show(id: number): Observable<ChannelI> {
+  show(id: string): Observable<ChannelI> {
     return this.http.get<ChannelI>(`${this.apiUrl}/${id}`);
   }
 

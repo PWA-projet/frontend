@@ -12,7 +12,7 @@ export class MessageService {
 
   constructor(private http: HttpClient) {}
 
-  index(channelId: number): Observable<MessageI[]> {
+  index(channelId: string): Observable<MessageI[]> {
     return this.http.get<MessageI[]>(`${this.apiUrl}/${channelId}/message`);
   }
 
