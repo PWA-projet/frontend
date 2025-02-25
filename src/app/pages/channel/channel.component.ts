@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -47,7 +47,6 @@ export class ChannelComponent implements OnInit {
     private messageService: MessageService,
     private jwtService: JwtService,
     private socketService: SocketService,
-    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -61,9 +60,7 @@ export class ChannelComponent implements OnInit {
 
       // 🔹 Vérifier que l'écoute fonctionne
       this.socketService.receiveMessages().subscribe((message) => {
-        console.log('📥 Message reçu dans le composant:', message);
         if (message.channelId === this.channel.id) {
-          console.log('✅ Ajout du message dans le tableau:', message);
           this.messages.push(message);
           this.scrollToBottom();
         }
