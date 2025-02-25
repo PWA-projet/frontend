@@ -6,7 +6,7 @@ export interface JwtI {
     lastUsedAt: string | null;
     expiresAt: string;
   };
-  id: number;
+  id: string;
   name: string;
   email: string;
 }

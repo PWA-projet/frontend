@@ -3,6 +3,7 @@ import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
 import { JwtService } from '../../../shared/services/jwt.service';
+import { SocketService } from '../../../shared/services/socket.service';
 import { Card } from 'primeng/card';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
@@ -44,7 +45,8 @@ export class ChannelComponent implements OnInit {
     private router: Router,
     private channelService: ChannelService,
     private messageService: MessageService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
+    private socketService: SocketService,
   ) {}
 
   ngOnInit() {
@@ -52,11 +54,23 @@ export class ChannelComponent implements OnInit {
       const channelId = params['id'];
       this.loadChannel(channelId);
       this.loadMessage(channelId);
+
+      // 🔹 Joindre le canal WebSocket
+      this.socketService.joinChannel(channelId);
+
+      // 🔹 Vérifier que l'écoute fonctionne
+      this.socketService.receiveMessages().subscribe((message) => {
+        if (message.channelId === this.channel.id) {
+          this.messages.push(message);
+          this.scrollToBottom();
+        }
+      });
     });
+
     this.currentUser = this.jwtService.getJwt();
   }
 
-  loadChannel(channelId: number) {
+  loadChannel(channelId: string) {
     this.channelService.show(channelId).subscribe({
       next: (data: ChannelI) => {
         this.channel = data;
@@ -67,7 +81,7 @@ export class ChannelComponent implements OnInit {
     });
   }
 
-  loadMessage(channelId: number) {
+  loadMessage(channelId: string) {
     this.messageService.index(channelId).subscribe({
       next: (data: MessageI[]) => {
         this.messages = data;
@@ -79,7 +93,7 @@ export class ChannelComponent implements OnInit {
     });
   }
 
-  sendMessage(channelId: number) {
+  sendMessage(channelId: string) {
     if (!this.newMessageContent.trim()) return;
 
     const newMessage: MessageI = {
@@ -92,8 +106,7 @@ export class ChannelComponent implements OnInit {
       }
     };
 
-    this.messages.push(newMessage); // Ajoute au tableau local
-    this.scrollToBottom();
+    this.socketService.sendMessage(newMessage);
     this.newMessageContent = '';
   }
 

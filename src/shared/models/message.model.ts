@@ -1,10 +1,10 @@
 export interface MessageI {
-  id?: number;
-  channelId: number;
+  id?: string;
+  channelId: string;
   content: string;
   createdAt: string;
   author: {
-    id: number;
+    id: string;
     name: string;
   };
 }
