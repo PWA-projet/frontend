@@ -12,8 +12,18 @@ export class SocketService {
 
   constructor() {
     this.socket = io(environment.apiUrl);
+
     this.socket.on('connect', () => {
-      console.log('Connected to WebSocket server!');
+      console.log('✅ Connecté au serveur WebSocket !');
+    });
+
+    // 🔹 Afficher tous les événements WebSocket reçus
+    this.socket.onAny((event, ...args) => {
+      console.log(`📩 Événement WebSocket reçu: ${event}`, args);
+    });
+
+    this.socket.on('newMessage', (message) => {
+      console.log('📥 Nouveau message reçu via WebSocket:', message);
     });
   }
 
@@ -21,8 +31,13 @@ export class SocketService {
    * Rejoint un canal spécifique
    */
   joinChannel(channelId: string): void {
-    console.log('🔹 Rejoindre le canal:', channelId);
-    this.socket.emit('joinChannel', channelId);
+    console.log(`🔹 Demande de rejoindre le canal: ${channelId}`);
+    this.socket.emit("joinChannel", channelId);
+
+    // Vérifier que le serveur répond
+    this.socket.on("joinedChannel", (data) => {
+      console.log(`✅ Confirmation: L'utilisateur a bien rejoint le canal ${data.channelId}`);
+    });
   }
 
   /**
@@ -31,7 +46,7 @@ export class SocketService {
   receiveMessages(): Observable<any> {
     return new Observable(observer => {
       this.socket.on('newMessage', (message) => {
-        console.log('Received message:', message);
+        console.log('📥 Nouveau message reçu:', message); // Vérifie si ça s'affiche
         observer.next(message);
       });
     });

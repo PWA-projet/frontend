@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
     this.router.navigate([APP_ROUTES.PROFILE]);
   }
 
-  goToChannel(channelId: number) {
+  goToChannel(channelId: string) {
     this.router.navigate([APP_ROUTES.CHANNEL.ID.replace(':id', String(channelId))]);
   }
 }

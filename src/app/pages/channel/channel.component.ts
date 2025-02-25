@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -46,7 +46,8 @@ export class ChannelComponent implements OnInit {
     private channelService: ChannelService,
     private messageService: MessageService,
     private jwtService: JwtService,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -55,14 +56,14 @@ export class ChannelComponent implements OnInit {
       this.loadChannel(channelId);
       this.loadMessage(channelId);
 
-      // Joindre le canal via WebSocket
+      // 🔹 Joindre le canal WebSocket
       this.socketService.joinChannel(channelId);
 
-      // Écouter les nouveaux messages via WebSocket
+      // 🔹 Vérifier que l'écoute fonctionne
       this.socketService.receiveMessages().subscribe((message) => {
-        console.log('Message reçu dans le composant:', message);
-        if (message.channelId === channelId) {
-          console.log('Ajout du message au tableau:', message);
+        console.log('📥 Message reçu dans le composant:', message);
+        if (message.channelId === this.channel.id) {
+          console.log('✅ Ajout du message dans le tableau:', message);
           this.messages.push(message);
           this.scrollToBottom();
         }
@@ -95,7 +96,7 @@ export class ChannelComponent implements OnInit {
     });
   }
 
-  sendMessage(channelId: number) {
+  sendMessage(channelId: string) {
     if (!this.newMessageContent.trim()) return;
 
     const newMessage: MessageI = {
@@ -109,9 +110,6 @@ export class ChannelComponent implements OnInit {
     };
 
     this.socketService.sendMessage(newMessage);
-
-    this.messages.push(newMessage);
-    this.scrollToBottom();
     this.newMessageContent = '';
   }
 
