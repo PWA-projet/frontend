@@ -22,7 +22,7 @@ export class SocketService {
     this.socket.emit("joinChannel", channelId);
   }
 
-  receiveMessages(): Observable<any> {
+  receiveMessages(): Observable<MessageI> {
     return new Observable(observer => {
       this.socket.on('newMessage', (message) => {
         observer.next(message);

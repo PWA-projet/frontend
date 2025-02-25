@@ -59,7 +59,7 @@ export class ChannelComponent implements OnInit {
       this.socketService.joinChannel(channelId);
 
       // 🔹 Vérifier que l'écoute fonctionne
-      this.socketService.receiveMessages().subscribe((message) => {
+      this.socketService.receiveMessages().subscribe((message: MessageI) => {
         if (message.channelId === this.channel.id) {
           this.messages.push(message);
           this.scrollToBottom();
