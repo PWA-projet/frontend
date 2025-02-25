@@ -107,7 +107,19 @@ export class ChannelComponent implements OnInit {
     };
 
     this.socketService.sendMessage(newMessage);
+    this.saveMessage(channelId, newMessage)
     this.newMessageContent = '';
+  }
+
+  saveMessage(channelId: string, newMessage: MessageI) {
+    this.messageService.store(channelId, newMessage).subscribe({
+      next: (savedMessage: MessageI) => {
+        console.log('Message saved:', savedMessage.content);
+      },
+      error: (error) => {
+        console.error('Error saving message:', error);
+      }
+    });
   }
 
   scrollToBottom(): void {
