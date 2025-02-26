@@ -11,26 +11,35 @@ export class SocketService {
   private readonly socket: Socket;
 
   constructor() {
-    this.socket = io(environment.apiUrl);
+    this.socket = io(environment.apiUrl, {
+      transports: ["websocket"],
+    });
 
     this.socket.on('connect', () => {
       console.log('✅ Connecté au serveur WebSocket !');
     });
+
+    this.socket.on('connect_error', (err) => {
+      console.error('🚨 Erreur de connexion WebSocket:', err);
+    });
   }
 
   joinChannel(channelId: string): void {
+    console.log(`📡 Rejoindre le canal: ${channelId}`);
     this.socket.emit("joinChannel", channelId);
   }
 
   receiveMessages(): Observable<MessageI> {
     return new Observable(observer => {
       this.socket.on('newMessage', (message) => {
+        console.log("📩 Message reçu via WebSocket:", message);
         observer.next(message);
       });
     });
   }
 
   sendMessage(message: MessageI): void {
+    console.log("🚀 Envoi du message via WebSocket:", message);
     this.socket.emit('newMessage', message);
   }
 }
