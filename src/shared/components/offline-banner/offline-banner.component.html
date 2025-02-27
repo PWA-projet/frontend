@@ -1,3 +1,6 @@
 <div *ngIf="isOffline" class="offline-banner">
-  <p>Vous êtes hors ligne. Certaines fonctionnalités peuvent ne pas être disponibles.</p>
+  <p-message severity="warn">
+    <img src="imgs/wifi_off.svg" alt="offline" />
+    No connection
+  </p-message>
 </div>

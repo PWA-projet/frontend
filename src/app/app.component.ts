@@ -6,7 +6,7 @@ import {OfflineBannerComponent} from '../shared/components/offline-banner/offlin
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, OfflineBannerComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,11 +1,5 @@
-.offline-banner {
-  background-color: #f44336;
-  color: white;
-  text-align: center;
-  padding: 10px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 9999;
+.offline-banner span {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
 }
