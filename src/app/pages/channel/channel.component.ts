@@ -106,8 +106,13 @@ export class ChannelComponent implements OnInit {
       }
     };
 
+    // Envoi du message via WebSocket
     this.socketService.sendMessage(newMessage);
-    this.saveMessage(channelId, newMessage)
+
+    // Sauvegarde du message dans le serveur
+    this.saveMessage(channelId, newMessage);
+
+    // Réinitialisation du champ de texte
     this.newMessageContent = '';
   }
 

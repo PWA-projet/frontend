@@ -35,6 +35,7 @@
       pInputText
       variant="filled"
       placeholder="Envoyer un Chat"
+      (keydown.enter)="sendMessage(channel.id)"
     />
     <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
