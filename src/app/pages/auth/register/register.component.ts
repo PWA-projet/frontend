@@ -16,6 +16,7 @@ import { Message } from 'primeng/message';
 import { Button } from 'primeng/button';
 import { NgIf } from '@angular/common';
 import {APP_ROUTES} from '../../../../shared/constants/routes';
+import { Card } from 'primeng/card';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,8 @@ import {APP_ROUTES} from '../../../../shared/constants/routes';
     InputText,
     Message,
     NgIf,
-    Button
+    Button,
+    Card
   ],
   templateUrl: './register.component.html',
   standalone: true,

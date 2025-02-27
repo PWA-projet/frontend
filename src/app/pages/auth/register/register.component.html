@@ -1,69 +1,70 @@
-<div class="form-container">
-  <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input
-        id="name"
-        type="text"
-        pInputText
-        formControlName="name"
-        placeholder="Enter your name"
-      />
-      <p-message *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched" severity="error" text="Name is required"></p-message>
-      <p-message *ngIf="registerForm.get('name')?.hasError('minlength') && registerForm.get('name')?.touched" severity="error" text="Password must be at least 3 characters"></p-message>
-    </div>
+<section class="register">
+  <p-card class="register-container" [style]="{ borderRadius: '1rem' }">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Enter your name"
+          [style]="{ width: '100%' }"
+        />
+        <p-message *ngIf="registerForm.get('name')?.hasError('required') && registerForm.get('name')?.touched" severity="error" text="Name is required"></p-message>
+        <p-message *ngIf="registerForm.get('name')?.hasError('minlength') && registerForm.get('name')?.touched" severity="error" text="Password must be at least 3 characters"></p-message>
+      </div>
 
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        type="text"
-        pInputText
-        formControlName="email"
-        placeholder="Enter your email"
-      />
-      <p-message *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched" severity="error" text="Email is required"></p-message>
-      <p-message *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" severity="error" text="Invalid email format"></p-message>
-    </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="text"
+          pInputText
+          formControlName="email"
+          placeholder="Enter your email"
+          [style]="{ width: '100%' }"
+        />
+        <p-message *ngIf="registerForm.get('email')?.hasError('required') && registerForm.get('email')?.touched" severity="error" text="Email is required"></p-message>
+        <p-message *ngIf="registerForm.get('email')?.hasError('email') && registerForm.get('email')?.touched" severity="error" text="Invalid email format"></p-message>
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <p-password
-        id="password"
-        formControlName="password"
-        [feedback]="true"
-        promptLabel="Choose a password"
-        weakLabel="Weak password"
-        mediumLabel="Medium password"
-        strongLabel="Strong password"
-        placeholder="Enter your password"
-        [toggleMask]="true"
-      ></p-password>
-      <p-message *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched" severity="error" text="Password is required"></p-message>
-      <p-message *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched" severity="error" text="Password must be at least 12 characters"></p-message>
-      <p-message *ngIf="registerForm.get('password')?.hasError('specialCharacter') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one special character"></p-message>
-      <p-message *ngIf="registerForm.get('password')?.hasError('upperCase') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one uppercase letter"></p-message>
-      <p-message *ngIf="registerForm.get('password')?.hasError('lowerCase') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one lowercase letter"></p-message>
-    </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <p-password
+          id="password"
+          formControlName="password"
+          [feedback]="true"
+          promptLabel="Choose a password"
+          weakLabel="Weak password"
+          mediumLabel="Medium password"
+          strongLabel="Strong password"
+          placeholder="Enter your password"
+          [toggleMask]="true"
+        ></p-password>
+        <p-message *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched" severity="error" text="Password is required"></p-message>
+        <p-message *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched" severity="error" text="Password must be at least 12 characters"></p-message>
+        <p-message *ngIf="registerForm.get('password')?.hasError('specialCharacter') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one special character"></p-message>
+        <p-message *ngIf="registerForm.get('password')?.hasError('upperCase') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one uppercase letter"></p-message>
+        <p-message *ngIf="registerForm.get('password')?.hasError('lowerCase') && registerForm.get('password')?.touched" severity="error" text="Password must contain at least one lowercase letter"></p-message>
+      </div>
 
-    <div class="form-group">
-      <label for="password_confirmation">Confirm Password</label>
-      <p-password
-        id="password_confirmation"
-        formControlName="password_confirmation"
-        promptLabel="Confirm your password"
-        weakLabel="Weak password"
-        mediumLabel="Medium password"
-        strongLabel="Strong password"
-        placeholder="Confirm your password"
-        [toggleMask]="true"
-      ></p-password>
-      <p-message *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('password_confirmation')?.touched" severity="error" text="Passwords do not match"></p-message>
-    </div>
+      <div class="form-group">
+        <label for="password_confirmation">Confirm Password</label>
+        <p-password
+          id="password_confirmation"
+          formControlName="password_confirmation"
+          placeholder="Confirm your password"
+          [toggleMask]="true"
+          [feedback]="false"
+        ></p-password>
+        <p-message *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('password_confirmation')?.touched" severity="error" text="Passwords do not match"></p-message>
+      </div>
 
-    <div class="form-actions">
-      <p-button type="submit" label="Submit" [disabled]="registerForm.invalid" />
-      <p-button type="button" label="Go to Login" severity="secondary" (click)="goToLogin()" />
-    </div>
-  </form>
-</div>
+      <div class="form-actions">
+        <p-button type="submit" label="Submit" [style]="{ width: '100%' }" [disabled]="registerForm.invalid" />
+        <p-button type="button" label="Go to Login" severity="secondary" [style]="{ width: '100%' }" (click)="goToLogin()" />
+      </div>
+    </form>
+  </p-card>
+</section>

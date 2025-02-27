@@ -26,7 +26,7 @@ section {
 /* Application d'un fond clair si l'utilisateur a un mode clair système */
 @media (prefers-color-scheme: light) {
   :root {
-    --mode-color: #d5d5d5;
+    --mode-color: #e7e7ee;
     --green-color: #08ad45;
     --text-color: #3b3b3b;
   }

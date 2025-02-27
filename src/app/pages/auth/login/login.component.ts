@@ -7,6 +7,7 @@ import { Password } from 'primeng/password';
 import { InputText } from 'primeng/inputtext';
 import { Button } from 'primeng/button';
 import { APP_ROUTES } from '../../../../shared/constants/routes';
+import { Card } from 'primeng/card';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ import { APP_ROUTES } from '../../../../shared/constants/routes';
     ReactiveFormsModule,
     Password,
     InputText,
-    Button
+    Button,
+    Card
   ],
   templateUrl: './login.component.html',
   standalone: true,
