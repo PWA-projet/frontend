@@ -45,6 +45,9 @@ h1 {
   line-height: 1.25;
   flex-grow: 1;
   text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channels .card .pi-angle-right {
