@@ -3,10 +3,11 @@ import { NgForOf, NgIf } from '@angular/common';
 import { DrawerComponent } from '../../../shared/components/drawer/drawer.component';
 import { ChannelService}  from '../../../shared/services/channel.service';
 import { ChannelI } from '../../../shared/models/channel.model';
-import { Router } from '@angular/router';
+import {Router, RouterOutlet} from '@angular/router';
 import { APP_ROUTES } from '../../../shared/constants/routes';
 import { Button } from 'primeng/button';
 import { HomeSkeletonComponent } from '../../../shared/components/skeletons/home-skeleton/home-skeleton.component';
+import {OfflineBannerComponent} from '../../../shared/components/offline-banner/offline-banner.component';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ import { HomeSkeletonComponent } from '../../../shared/components/skeletons/home
     Button,
     NgIf,
     HomeSkeletonComponent,
+    OfflineBannerComponent,
   ],
   templateUrl: './home.component.html',
   standalone: true,

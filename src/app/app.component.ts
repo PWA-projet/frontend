@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { environment } from '../shared/environments/environment.prod';
 import { MyPreset } from './mytheme';
+import {OfflineBannerComponent} from '../shared/components/offline-banner/offline-banner.component';
 
 @Component({
   selector: 'app-root',
