@@ -1,15 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {NetworkStatusService} from '../../services/network-status.service';
-import {NgIf, NgStyle} from '@angular/common';
-import {Message} from 'primeng/message';
+import { Component, OnInit } from '@angular/core';
+import { NetworkStatusService } from '../../services/network-status.service';
+import { NgIf } from '@angular/common';
+import { Message } from 'primeng/message';
 
 @Component({
   selector: 'app-offline-banner',
   imports: [
     NgIf,
     Message,
-    NgStyle,
-
   ],
   templateUrl: './offline-banner.component.html',
   styleUrl: './offline-banner.component.css'
