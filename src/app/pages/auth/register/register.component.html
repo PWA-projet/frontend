@@ -41,6 +41,8 @@
           strongLabel="Strong password"
           placeholder="Enter your password"
           [toggleMask]="true"
+          [inputStyle]="{'width': '100%'}"
+          [style]="{'width': '100%'}"
         ></p-password>
         <p-message *ngIf="registerForm.get('password')?.hasError('required') && registerForm.get('password')?.touched" severity="error" text="Password is required"></p-message>
         <p-message *ngIf="registerForm.get('password')?.hasError('minlength') && registerForm.get('password')?.touched" severity="error" text="Password must be at least 12 characters"></p-message>
@@ -57,6 +59,8 @@
           placeholder="Confirm your password"
           [toggleMask]="true"
           [feedback]="false"
+          [inputStyle]="{'width': '100%'}"
+          [style]="{'width': '100%'}"
         ></p-password>
         <p-message *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('password_confirmation')?.touched" severity="error" text="Passwords do not match"></p-message>
       </div>
