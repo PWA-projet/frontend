@@ -1,7 +1,13 @@
-.login-container {
-  margin: auto;
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+
+.login-container {
   max-width: 600px;
+  width: 100%;
 }
 
 form {

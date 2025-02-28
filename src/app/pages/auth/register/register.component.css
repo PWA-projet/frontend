@@ -1,7 +1,13 @@
-.register-container {
-  margin: auto;
+.register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+
+.register-container {
   max-width: 600px;
+  width: 100%;
 }
 
 form {
