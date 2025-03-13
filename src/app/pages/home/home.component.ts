@@ -24,6 +24,7 @@ import { HomeSkeletonComponent } from '../../../shared/components/skeletons/home
 export class HomeComponent implements OnInit {
   visible: boolean = false;
   channels: ChannelI[] = [];
+
   isLoading: boolean = true;
 
   constructor(
