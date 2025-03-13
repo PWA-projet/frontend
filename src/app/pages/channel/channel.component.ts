@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -48,6 +48,7 @@ export class ChannelComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private changeDetectorRef: ChangeDetectorRef,
     private channelService: ChannelService,
     private messageService: MessageService,
     private jwtService: JwtService,
@@ -141,11 +142,12 @@ export class ChannelComponent implements OnInit {
   }
 
   scrollToBottom(): void {
-    if (this.messageContainer) {
-      setTimeout(() => {
+    this.changeDetectorRef.detectChanges();
+    setTimeout(() => {
+      if (this.messageContainer) {
         this.messageContainer.nativeElement.scrollTop = this.messageContainer.nativeElement.scrollHeight;
-      }, 100);
-    }
+      }
+    }, 100);
   }
 
   goToHome() {
