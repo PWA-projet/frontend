@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { SkeletonModule, Skeleton } from 'primeng/skeleton';
 
 @Component({
-  selector: 'app-home-skeleton',
+  selector: 'app-message-skeleton',
   imports: [
     SkeletonModule,
     Skeleton
   ],
-  templateUrl: './home-skeleton.component.html',
-  styleUrl: './home-skeleton.component.css'
+  templateUrl: './message-skeleton.component.html',
+  styleUrl: './message-skeleton.component.css'
 })
-export class HomeSkeletonComponent {
+export class MessageSkeletonComponent {
 
 }

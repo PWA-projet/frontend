@@ -1,4 +1,4 @@
-<section class="channel" *ngIf="channel">
+<section class="channel" *ngIf="!isLoadingChannel">
   <div class="header">
     <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToHome()">
       <i class="pi pi-angle-left"></i>
@@ -11,7 +11,7 @@
     </p-button>
   </div>
 
-  <div #messageContainer class="message">
+  <div #messageContainer class="message" *ngIf="!isLoadingMessage" >
     <p-card *ngFor="let msg of messages" [style]="{ borderRadius: '1rem' }">
       <div class="card">
         <span
@@ -40,5 +40,5 @@
     <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
 </section>
-
-<app-channel-skeleton *ngIf="!channel" />
+<app-channel-skeleton *ngIf="isLoadingChannel" />
+<app-message-skeleton *ngIf="isLoadingMessage" />

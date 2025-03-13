@@ -14,6 +14,7 @@ import { Button } from 'primeng/button';
 import { JwtI } from '../../../shared/models/jwt.model';
 import { APP_ROUTES } from '../../../shared/constants/routes';
 import { ChannelSkeletonComponent } from '../../../shared/components/skeletons/channel-skeleton/channel-skeleton.component';
+import { MessageSkeletonComponent } from '../../../shared/components/skeletons/message-skeleton/message-skeleton.component';
 
 @Component({
   selector: 'app-channel',
@@ -26,7 +27,8 @@ import { ChannelSkeletonComponent } from '../../../shared/components/skeletons/c
     ReactiveFormsModule,
     Button,
     FormsModule,
-    ChannelSkeletonComponent
+    ChannelSkeletonComponent,
+    MessageSkeletonComponent
   ],
   templateUrl: './channel.component.html',
   standalone: true,
@@ -39,6 +41,9 @@ export class ChannelComponent implements OnInit {
   messages: MessageI[] = [];
   currentUser?: JwtI | null;
   newMessageContent: string = '';
+
+  isLoadingChannel: boolean = true;
+  isLoadingMessage: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -71,24 +76,32 @@ export class ChannelComponent implements OnInit {
   }
 
   loadChannel(channelId: string) {
+    this.isLoadingChannel = true;
     this.channelService.show(channelId).subscribe({
       next: (data: ChannelI) => {
         this.channel = data;
       },
       error: (error: any) => {
         console.error('Error fetching channel:', error);
+      },
+      complete: () => {
+        this.isLoadingChannel = false;
       }
     });
   }
 
   loadMessage(channelId: string) {
+    this.isLoadingMessage = true;
     this.messageService.index(channelId).subscribe({
       next: (data: MessageI[]) => {
         this.messages = data;
         this.scrollToBottom();
       },
       error: (error: any) => {
-        console.error('Error fetching channel:', error);
+        console.error('Erreur lors de la récupération des messages:', error);
+      },
+      complete: () => {
+        this.isLoadingMessage = false;
       }
     });
   }
