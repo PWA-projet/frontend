@@ -42,6 +42,16 @@
                 }
               ]
             },
+            "recette": {
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
+              "fileReplacements": [
+                {
+                  "replace": "src/shared/environments/environment.dev.ts",
+                  "with": "src/shared/environments/environment.rct.ts"
+                }
+              ]
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
