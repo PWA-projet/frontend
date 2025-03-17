@@ -41,39 +41,39 @@
   </div>
 </section>
 
-<p-dialog
-  header="Membres du canal"
-  [(visible)]="displayPopup"
-  [style]="{ height: '100vh', width: '100%', margin: '0', top: '0', right: '0', left: 'auto'}"
-  [modal]="true"
-  [draggable]="false"
-  [resizable]="false"
-  [closable]="true"
-  [baseZIndex]="10000"
-  [class]="'slide-in-right'">
-  <div class="popup-content">
-    <div class="members-section">
-      <h3>Membres ({{members.length}})</h3>
-      <div class="members-list">
-        <div class="member-item" *ngFor="let member of members">
-          <span class="member-name">{{ member.name }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="channel-key-section">
-      <h3>Clé du canal</h3>
-      <div class="channel-key-container">
-        <input type="text" readonly pInputText [(ngModel)]="channelKey"  />
-        <p-button
-          icon="pi pi-copy"
-          severity="secondary"
-          (click)="copyChannelKey()"
-          [style]="{ 'min-width': '40px' }">
-        </p-button>
-      </div>
-    </div>
-  </div>
-</p-dialog>
+<!--<p-dialog-->
+<!--  header="Membres du canal"-->
+<!--  [(visible)]="displayPopup"-->
+<!--  [style]="{ height: '100vh', width: '100%', margin: '0', top: '0', right: '0', left: 'auto'}"-->
+<!--  [modal]="true"-->
+<!--  [draggable]="false"-->
+<!--  [resizable]="false"-->
+<!--  [closable]="true"-->
+<!--  [baseZIndex]="10000"-->
+<!--  [class]="'slide-in-right'">-->
+<!--  <div class="popup-content">-->
+<!--    <div class="members-section">-->
+<!--      <h3>Membres ({{members.length}})</h3>-->
+<!--      <div class="members-list">-->
+<!--        <div class="member-item" *ngFor="let member of members">-->
+<!--          <span class="member-name">{{ member.name }}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="channel-key-section">-->
+<!--      <h3>Clé du canal</h3>-->
+<!--      <div class="channel-key-container">-->
+<!--        <input type="text" readonly pInputText [(ngModel)]="channelKey"  />-->
+<!--        <p-button-->
+<!--          icon="pi pi-copy"-->
+<!--          severity="secondary"-->
+<!--          (click)="copyChannelKey()"-->
+<!--          [style]="{ 'min-width': '40px' }">-->
+<!--        </p-button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</p-dialog>-->
 
 <app-channel-skeleton *ngIf="isLoadingChannel" />
 <app-message-skeleton *ngIf="isLoadingMessage" />
