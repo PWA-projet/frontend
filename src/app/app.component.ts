@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { environment } from '../shared/environments/environment.prod';
 import { MyPreset } from './mytheme';
 import { OfflineBannerComponent } from '../shared/components/offline-banner/offline-banner.component';
+import { PushNotificationService } from '../shared/services/push-notification.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,9 @@ import { OfflineBannerComponent } from '../shared/components/offline-banner/offl
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  constructor() {
+  constructor(
+    private pushService: PushNotificationService
+  ) {
     console.log(environment.production);
     console.log("" +
       " _____  _     _  _                 _     __    __   ___ \n" +
@@ -22,6 +25,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.pushService.subscribeToPushNotifications();
+    this.pushService.subscribeToClicksNotifications();
+
     // Vérifier si MyPreset est bien défini avant d'appliquer la couleur primary
     if (MyPreset?.semantic?.primary?.[400]) {
       document.documentElement.style.setProperty('--primary-color', MyPreset.semantic.primary[400]);

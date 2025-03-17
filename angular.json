@@ -42,10 +42,21 @@
                 }
               ]
             },
+            "recette": {
+              "outputHashing": "all",
+              "serviceWorker": "ngsw-config.json",
+              "fileReplacements": [
+                {
+                  "replace": "src/shared/environments/environment.dev.ts",
+                  "with": "src/shared/environments/environment.rct.ts"
+                }
+              ]
+            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
+              "serviceWorker": "ngsw-config.json",
               "fileReplacements": [
                 {
                   "replace": "src/shared/environments/environment.prod.ts",
@@ -61,6 +72,9 @@
           "configurations": {
             "production": {
               "buildTarget": "frontend:build:production"
+            },
+            "recette": {
+              "buildTarget": "frontend:build:recette"
             },
             "development": {
               "buildTarget": "frontend:build:development"

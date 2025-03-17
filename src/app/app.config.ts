@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
+            enabled: true , //!isDevMode()
             registrationStrategy: 'registerWhenStable:30000'
           }),
     provideHttpClient(withInterceptors([JwtInterceptor])),
@@ -29,9 +29,6 @@ export const appConfig: ApplicationConfig = {
         }
       },
       ripple: true
-    }), provideServiceWorker('ngsw-worker.js', {
-            enabled: !isDevMode(),
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+    })
   ],
 };

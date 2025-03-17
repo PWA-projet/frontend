@@ -21,7 +21,7 @@ export class OfflineBannerComponent implements OnInit{
     this.networkStatusService.onlineStatus$.subscribe(
       (status) => (this.isOffline = !status)
     );
-    if (!this.isOffline) {
+    if (this.isOffline) {
       console.log('offline');
     }
   }
