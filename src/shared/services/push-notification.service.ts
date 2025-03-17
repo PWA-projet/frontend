@@ -13,7 +13,6 @@ export class PushNotificationService {
   constructor(private swPush: SwPush, private http: HttpClient) {}
 
   subscribeToPushNotifications() {
-    console.log('subscribeToPushNotifications')
     if (!this.swPush.isEnabled) {
       console.log('Les notifications ne sont pas supportées');
       return;
@@ -22,7 +21,6 @@ export class PushNotificationService {
     this.swPush.requestSubscription({
       serverPublicKey: this.VAPID_PUBLIC_KEY
     }).then(subscription => {
-      console.log('Subscription:', subscription);
       // Envoie la souscription au backend
       this.http.post<any>(`${this.apiUrl}/subscribe-notification`, subscription).subscribe();
     }).catch(err => console.error('Erreur de souscription', err));

@@ -32,14 +32,12 @@ export class SocketService {
   receiveMessages(): Observable<MessageI> {
     return new Observable(observer => {
       this.socket.on('newMessage', (message) => {
-        console.log("📩 Message reçu via WebSocket:", message);
         observer.next(message);
       });
     });
   }
 
   sendMessage(message: MessageI): void {
-    console.log("🚀 Envoi du message via WebSocket:", message);
     this.socket.emit('newMessage', message);
   }
 }
