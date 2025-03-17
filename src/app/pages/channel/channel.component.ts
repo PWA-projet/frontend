@@ -15,6 +15,8 @@ import { JwtI } from '../../../shared/models/jwt.model';
 import { APP_ROUTES } from '../../../shared/constants/routes';
 import { ChannelSkeletonComponent } from '../../../shared/components/skeletons/channel-skeleton/channel-skeleton.component';
 import { MessageSkeletonComponent } from '../../../shared/components/skeletons/message-skeleton/message-skeleton.component';
+import {DialogModule} from 'primeng/dialog';
+import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-channel',
@@ -28,7 +30,9 @@ import { MessageSkeletonComponent } from '../../../shared/components/skeletons/m
     Button,
     FormsModule,
     ChannelSkeletonComponent,
-    MessageSkeletonComponent
+    MessageSkeletonComponent,
+    DialogModule,
+    ClipboardModule
   ],
   templateUrl: './channel.component.html',
   standalone: true,
@@ -45,6 +49,10 @@ export class ChannelComponent implements OnInit {
   isLoadingChannel: boolean = true;
   isLoadingMessage: boolean = true;
 
+  displayPopup: boolean = false;
+  channelKey: string = '';
+  members: { id: string, name: string }[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -53,6 +61,7 @@ export class ChannelComponent implements OnInit {
     private messageService: MessageService,
     private jwtService: JwtService,
     private socketService: SocketService,
+    private clipboard: Clipboard
   ) {}
 
   ngOnInit() {
@@ -81,6 +90,8 @@ export class ChannelComponent implements OnInit {
     this.channelService.show(channelId).subscribe({
       next: (data: ChannelI) => {
         this.channel = data;
+        this.channelKey = data.key;
+        this.members = data.members;
       },
       error: (error: any) => {
         console.error('Error fetching channel:', error);
@@ -153,4 +164,14 @@ export class ChannelComponent implements OnInit {
   goToHome() {
     this.router.navigate([APP_ROUTES.HOME]);
   }
+
+  openMembersPopup() {
+    this.displayPopup = true;
+  }
+
+  copyChannelKey() {
+    this.clipboard.copy(this.channelKey);
+    alert('Clé copiée dans le presse-papiers !');
+  }
 }
+
