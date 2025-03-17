@@ -29,9 +29,6 @@ export const appConfig: ApplicationConfig = {
         }
       },
       ripple: true
-    }), provideServiceWorker('ngsw-worker.js', {
-            enabled: true , //!isDevMode()
-            registrationStrategy: 'registerWhenStable:30000'
-          }),
+    })
   ],
 };
