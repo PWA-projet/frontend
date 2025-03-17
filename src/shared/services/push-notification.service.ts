@@ -38,9 +38,10 @@ export class PushNotificationService {
       // Redirige vers l'URL de la notification
       const notificationUrl = payload.notification.data.url;
 
-      if (notificationUrl) {
-        // Ouvre l'URL dans un nouvel onglet
+      if (notificationUrl && notificationUrl !== '') {
         window.open(notificationUrl, '_blank');
+      } else {
+        console.error('L\'URL de la notification est invalide ou vide');
       }
     });
   }
