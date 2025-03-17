@@ -72,6 +72,9 @@
             "production": {
               "buildTarget": "frontend:build:production"
             },
+            "recette": {
+              "buildTarget": "frontend:build:recette"
+            },
             "development": {
               "buildTarget": "frontend:build:development"
             }
