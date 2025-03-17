@@ -6,7 +6,7 @@
     <h2 [ngClass]="{ 'long-name': channel.name.length > 10 }">
       {{ channel.name }}
     </h2>
-    <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToHome()">
+    <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="openMembersPopup()">
       <i class="pi pi-users"></i>
     </p-button>
   </div>
@@ -40,6 +40,40 @@
     <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
 </section>
+
+<p-dialog
+  header="Membres du canal"
+  [(visible)]="displayPopup"
+  [style]="{ height: '100vh', width: '100%', margin: '0', top: '0', right: '0', left: 'auto'}"
+  [modal]="true"
+  [draggable]="false"
+  [resizable]="false"
+  [closable]="true"
+  [baseZIndex]="10000"
+  [class]="'slide-in-right'">
+  <div class="popup-content">
+    <div class="members-section">
+      <h3>Membres ({{members.length}})</h3>
+      <div class="members-list">
+        <div class="member-item" *ngFor="let member of members">
+          <span class="member-name">{{ member.name }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="channel-key-section">
+      <h3>Clé du canal</h3>
+      <div class="channel-key-container">
+        <input type="text" readonly pInputText [(ngModel)]="channelKey"  />
+        <p-button
+          icon="pi pi-copy"
+          severity="secondary"
+          (click)="copyChannelKey()"
+          [style]="{ 'min-width': '40px' }">
+        </p-button>
+      </div>
+    </div>
+  </div>
+</p-dialog>
 
 <app-channel-skeleton *ngIf="isLoadingChannel" />
 <app-message-skeleton *ngIf="isLoadingMessage" />
