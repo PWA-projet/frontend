@@ -25,24 +25,4 @@ export class PushNotificationService {
       this.http.post<any>(`${this.apiUrl}/subscribe-notification`, subscription).subscribe();
     }).catch(err => console.error('Erreur de souscription', err));
   }
-
-  subscribeToClicksNotifications() {
-    this.swPush.notificationClicks.subscribe(payload => {
-      console.log(
-        'Action : ' + payload.action +
-        'Données de notification : ' + payload.notification.data +
-        'Données de notification.url : ' + payload.notification.data.url +
-        'Données de notification.body : ' + payload.notification.body
-      );
-
-      // Redirige vers l'URL de la notification
-      const notificationUrl = payload.notification.data.url;
-
-      if (notificationUrl && notificationUrl !== '') {
-        window.open(notificationUrl, '_blank');
-      } else {
-        console.error('L\'URL de la notification est invalide ou vide');
-      }
-    });
-  }
 }
