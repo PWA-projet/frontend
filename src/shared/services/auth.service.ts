@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { environment } from '../environments/environment.dev';
+import { environment } from '../environments/environment';
 import { AuthLoginI, AuthRegisterI, AuthUserI } from '../models/auth.model';
 import { JwtI } from '../models/jwt.model';
 import { JwtService } from "./jwt.service";

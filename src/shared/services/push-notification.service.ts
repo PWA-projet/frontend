@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment.dev';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PushNotificationService {
   private apiUrl = `${environment.apiUrl}`;
-  readonly VAPID_PUBLIC_KEY = 'BLSc8h04RqXb20KhjXaWMTFTL3hD0NXZ8r19TUWvt_NIkGo4zrEdhw4vUw2ZxraXOxNfJmoi8rrU4bHfFJD3H_s'; // Remplace avec ta clé publique
+  readonly VapidPublicKey = `${environment.VapidPublicKey}`; // Remplace avec ta clé publique
 
   constructor(private swPush: SwPush, private http: HttpClient) {}
 
@@ -19,7 +19,7 @@ export class PushNotificationService {
     }
 
     this.swPush.requestSubscription({
-      serverPublicKey: this.VAPID_PUBLIC_KEY
+      serverPublicKey: this.VapidPublicKey
     }).then(subscription => {
       // Envoie la souscription au backend
       this.http.post<any>(`${this.apiUrl}/subscribe-notification`, subscription).subscribe();

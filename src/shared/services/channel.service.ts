@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment.dev';
+import { environment } from '../environments/environment';
 import { ChannelI } from '../models/channel.model';
 import { Cacheable, CacheBuster, LocalStorageStrategy } from 'ts-cacheable';
 import { cacheBuster$, CACHE_MAX_AGE } from '../constants/cache';
