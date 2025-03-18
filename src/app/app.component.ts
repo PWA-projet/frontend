@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.pushService.subscribeToPushNotifications();
-    this.pushService.subscribeToClicksNotifications();
 
     // Vérifier si MyPreset est bien défini avant d'appliquer la couleur primary
     if (MyPreset?.semantic?.primary?.[400]) {
