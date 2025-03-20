@@ -10,6 +10,7 @@ import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { ChannelComponent } from './pages/channel/channel.component';
 import { CreateChannelComponent } from './pages/channel/create-channel/create-channel.component';
 import { JoinChannelComponent } from './pages/channel/join-channel/join-channel.component';
+import { SettingChannelComponent } from './pages/channel/setting-channel/setting-channel.component';
 import { APP_ROUTES } from '../shared/constants/routes';
 
 export const routes: Routes = [
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: APP_ROUTES.PROFILE, component: ProfileComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.CHANNEL.CREATE, component: CreateChannelComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.CHANNEL.JOIN, component: JoinChannelComponent, canActivate: [AuthGuard] },
+  { path: APP_ROUTES.CHANNEL.SETTING, component: SettingChannelComponent, canActivate: [AuthGuard] },
   { path: APP_ROUTES.CHANNEL.ID, component: ChannelComponent, canActivate: [AuthGuard] },
 
   { path: APP_ROUTES.NOT_FOUND, component: NotFoundComponent, pathMatch: 'full' },
