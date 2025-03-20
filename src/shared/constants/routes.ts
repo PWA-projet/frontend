@@ -9,6 +9,7 @@ export const APP_ROUTES = {
     ID: 'channel/:id',
     CREATE: 'channel/create',
     JOIN: 'channel/join',
+    SETTING: 'channel/:id/setting',
   },
   NOT_FOUND: '**',
 };

@@ -1,0 +1,45 @@
+<section class="setting-channel" *ngIf="!isLoading">
+  <div class="header">
+    <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }" (click)="goToChannel(channel.id)">
+      <i class="pi pi-angle-left"></i>
+    </p-button>
+    <h2 [ngClass]="{ 'long-name': channel.name.length > 10 }">
+      {{ channel.name }}
+    </h2>
+    <p-button [text]="true" severity="secondary" [style]="{ height: '3.5rem', borderRadius: '100%' }">
+      <i class="pi pi-users"></i>
+    </p-button>
+  </div>
+
+   <div class="channel-key">
+     <h3>Clé du canal</h3>
+     <div class="channel-key-container">
+       <input type="text" readonly pInputText [(ngModel)]="channel.key"  />
+       <p-button
+         icon="pi pi-copy"
+         severity="secondary"
+         (click)="copyChannelKey(channel.key)">
+       </p-button>
+     </div>
+   </div>
+
+   <div class="members">
+     <h3>Membres ({{channel.members.length}})</h3>
+     <p-table [value]="channel.members" [tableStyle]="{ 'border-radius': '0.5rem', 'overflow': 'hidden' }">
+       <ng-template #header>
+         <tr>
+           <th>Nom</th>
+         </tr>
+       </ng-template>
+       <ng-template #body let-member>
+         <tr>
+           <td>{{ member.name}}</td>
+         </tr>
+       </ng-template>
+     </p-table>
+   </div>
+
+  <div class="form-actions">
+    <p-button label="Quitter le channel" severity="danger" [style]="{ width: '100%' }"/>
+  </div>
+</section>
