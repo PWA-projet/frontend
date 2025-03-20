@@ -59,10 +59,8 @@ export class JoinChannelComponent implements OnInit {
         },
         error: (error) => {
           console.error('Channel join failed:', error);
+          this.isLoading = false;
           this.channelNotFound = true;
-        },
-        complete: () => {
-          this.isLoading = false;  // Arrête le chargement à la fin
         }
       });
     } else {
