@@ -2,23 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { ChannelI } from '../../../../shared/models/channel.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ChannelService } from '../../../../shared/services/channel.service';
-import { NgClass, NgForOf, NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { APP_ROUTES } from '../../../../shared/constants/routes';
 import { Button } from 'primeng/button';
 import { InputText } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
+import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-setting-channel',
   imports: [
     NgIf,
-    NgForOf,
     Button,
     InputText,
     FormsModule,
     ClipboardModule,
-    NgClass
+    NgClass,
+    TableModule
   ],
   templateUrl: './setting-channel.component.html',
   styleUrl: './setting-channel.component.css'

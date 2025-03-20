@@ -11,25 +11,35 @@
     </p-button>
   </div>
 
-   <div class="channel-key-section">
+   <div class="channel-key">
      <h3>Clé du canal</h3>
      <div class="channel-key-container">
        <input type="text" readonly pInputText [(ngModel)]="channel.key"  />
        <p-button
          icon="pi pi-copy"
          severity="secondary"
-         (click)="copyChannelKey(channel.key)"
-         [style]="{ 'min-width': '40px' }">
+         (click)="copyChannelKey(channel.key)">
        </p-button>
      </div>
    </div>
 
-   <div class="members-section">
+   <div class="members">
      <h3>Membres ({{channel.members.length}})</h3>
-     <div class="members-list">
-       <div class="member-item" *ngFor="let member of channel.members">
-         <span class="member-name">{{ member.name }}</span>
-       </div>
-     </div>
+     <p-table [value]="channel.members" [tableStyle]="{ 'border-radius': '1rem', 'overflow': 'hidden' }">
+       <ng-template #header>
+         <tr>
+           <th>Nom</th>
+         </tr>
+       </ng-template>
+       <ng-template #body let-member>
+         <tr>
+           <td>{{ member.name}}</td>
+         </tr>
+       </ng-template>
+     </p-table>
    </div>
+
+  <div class="form-actions">
+    <p-button label="Quitter le channel" severity="danger" [style]="{ width: '100%' }"/>
+  </div>
 </section>
