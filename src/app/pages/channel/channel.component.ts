@@ -47,8 +47,6 @@ export class ChannelComponent implements OnInit {
   isLoadingChannel: boolean = true;
   isLoadingMessage: boolean = true;
 
-  displayPopup: boolean = false;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,

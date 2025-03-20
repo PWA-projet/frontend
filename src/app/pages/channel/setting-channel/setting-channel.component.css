@@ -22,6 +22,16 @@ h2 {
   font-size: 1.5em;
 }
 
+/* Make the scrollbar visible in mobile browsers */
+@media screen and (max-width: 768px) {
+  h2.long-name {
+    font-size: 1rem; /* Si le texte est long */
+  }
+}
+
+
+
+
 /*!* Animations *!*/
 /*@keyframes slideInRight {*/
 /*  from {*/
