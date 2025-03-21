@@ -9,6 +9,8 @@ import { InputText } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ClipboardModule, Clipboard } from '@angular/cdk/clipboard';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-setting-channel',
@@ -19,8 +21,10 @@ import { TableModule } from 'primeng/table';
     FormsModule,
     ClipboardModule,
     NgClass,
-    TableModule
+    TableModule,
+    ToastModule,
   ],
+  providers: [MessageService],
   templateUrl: './setting-channel.component.html',
   styleUrl: './setting-channel.component.css'
 })
@@ -32,7 +36,8 @@ export class SettingChannelComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private channelService: ChannelService,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -59,7 +64,7 @@ export class SettingChannelComponent implements OnInit {
 
   copyChannelKey(key: string) {
     this.clipboard.copy(key);
-    alert('Clé copiée dans le presse-papiers !');
+    this.messageService.add({severity: 'info', summary: 'Copie réussie', detail: 'Code copié dans le presse-papiers.' });
   }
 
   goToChannel(channelId: string) {
