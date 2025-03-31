@@ -37,9 +37,24 @@
       placeholder="Envoyer un Chat"
       (keydown.enter)="sendMessage(channel.id)"
     />
+    <p-button #emojiButton icon="pi pi-face-smile" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (onClick)="handleClick($event)"/>
     <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
 </section>
+
+<ch-dialog
+           [(visible)]="visible"
+           [target]="emojiButton?.nativeElement"
+           [positions]="dialogPositions">
+  <ng-container content>
+    <ch-emoji-picker
+      [height]="400"
+      [width]="400"
+      (onEmojiSelected)="handleEmojiSelected($event)"
+    >
+    </ch-emoji-picker>
+  </ng-container>
+</ch-dialog>
 
 <app-channel-skeleton *ngIf="isLoadingChannel" />
 <app-message-skeleton *ngIf="isLoadingMessage" />
