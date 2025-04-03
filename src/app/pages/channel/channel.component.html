@@ -37,7 +37,7 @@
       placeholder="Envoyer un Chat"
       (keydown.enter)="sendMessage(channel.id)"
     />
-    <app-emoji-dialog [onEmojiSelect]="handleEmojiSelected"></app-emoji-dialog>
+    <app-emoji-dialog [onEmojiSelect]="handleEmojiSelected" />
     <p-button icon="pi pi-send" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="sendMessage(channel.id)"/>
   </div>
 </section>
