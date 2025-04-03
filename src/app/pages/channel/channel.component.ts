@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, OnInit, signal, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ChannelI } from '../../../shared/models/channel.model';
 import { ChannelService } from '../../../shared/services/channel.service';
 import { MessageService } from '../../../shared/services/message.service';
@@ -16,9 +16,7 @@ import { APP_ROUTES } from '../../../shared/constants/routes';
 import { ChannelSkeletonComponent } from '../../../shared/components/skeletons/channel-skeleton/channel-skeleton.component';
 import { MessageSkeletonComponent } from '../../../shared/components/skeletons/message-skeleton/message-skeleton.component';
 import { DialogModule } from 'primeng/dialog';
-import { EmojiPickerComponent, EmojiSelectedEvent } from '@chit-chat/ngx-emoji-picker/lib/components/emoji-picker';
-import { DialogComponent } from '@chit-chat/ngx-emoji-picker/lib/components/dialog';
-import { ConnectedPosition } from '@angular/cdk/overlay';
+import { EmojiDialogComponent } from '../../../shared/components/emoji-dialog/emoji-dialog.component';
 
 @Component({
   selector: 'app-channel',
@@ -34,8 +32,7 @@ import { ConnectedPosition } from '@angular/cdk/overlay';
     ChannelSkeletonComponent,
     MessageSkeletonComponent,
     DialogModule,
-    EmojiPickerComponent,
-    DialogComponent
+    EmojiDialogComponent
   ],
   templateUrl: './channel.component.html',
   standalone: true,
@@ -43,8 +40,6 @@ import { ConnectedPosition } from '@angular/cdk/overlay';
 })
 export class ChannelComponent implements OnInit  {
   @ViewChild('messageContainer') private messageContainer!: ElementRef;
-  @ViewChild('emojiButton', { read: ElementRef }) emojiButton!: ElementRef;
-
   channel!: ChannelI;
   messages: MessageI[] = [];
   currentUser?: JwtI | null;
@@ -52,31 +47,6 @@ export class ChannelComponent implements OnInit  {
 
   isLoadingChannel: boolean = true;
   isLoadingMessage: boolean = true;
-
-  visible = signal<boolean>(false);
-  dialogPositions: ConnectedPosition[] = [
-    {
-      originX: 'end',
-      originY: 'top',
-      overlayX: 'end',
-      overlayY: 'bottom',
-      offsetY: -10
-    }
-  ];
-
-  handleClick = (_evt: MouseEvent) => {
-    if (!this.emojiButton) {
-      console.error("emojiButton n'est pas encore disponible !");
-      return;
-    }
-    this.visible.set(true);
-  };
-
-  handleEmojiSelected = (evt: EmojiSelectedEvent) => {
-    if (!evt || !evt.emoji || !evt.emoji.id) return;
-
-    this.newMessageContent += evt.emoji.value;
-  };
 
   constructor(
     private route: ActivatedRoute,
@@ -173,6 +143,10 @@ export class ChannelComponent implements OnInit  {
       }
     });
   }
+
+  handleEmojiSelected = (emoji: string) => {
+    this.newMessageContent += emoji;  // Append emoji to the message content
+  };
 
   scrollToBottom(): void {
     this.changeDetectorRef.detectChanges();

@@ -1,21 +1,21 @@
-import { Component, ElementRef, Input, ViewChild, signal } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { EmojiPickerComponent, EmojiSelectedEvent } from '@chit-chat/ngx-emoji-picker/lib/components/emoji-picker';
-import { DialogComponent } from '@chit-chat/ngx-emoji-picker/lib/components/dialog';
 import { ConnectedPosition } from '@angular/cdk/overlay';
+import { DialogComponent } from '@chit-chat/ngx-emoji-picker/lib/components/dialog';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-emoji-dialog',
   standalone: true,
-  imports: [DialogModule, EmojiPickerComponent, DialogComponent],
+  imports: [DialogModule, EmojiPickerComponent, DialogComponent, Button],
   templateUrl: './emoji-dialog.component.html',
   styleUrls: ['./emoji-dialog.component.css'],
 })
 export class EmojiDialogComponent {
-  @Input() targetButton!: ElementRef;
   @Input() onEmojiSelect!: (emoji: string) => void;
+  @Input() visible: boolean = false;
 
-  visible = signal<boolean>(false);
   dialogPositions: ConnectedPosition[] = [
     {
       originX: 'end',
@@ -30,5 +30,9 @@ export class EmojiDialogComponent {
     if (evt?.emoji?.value) {
       this.onEmojiSelect(evt.emoji.value);
     }
+  }
+
+  toggleEmojiDialog() {
+    this.visible = !this.visible;
   }
 }

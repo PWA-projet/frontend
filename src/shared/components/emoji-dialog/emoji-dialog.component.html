@@ -1,6 +1,7 @@
-`<ch-dialog
+<p-button icon="pi pi-face-smile" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="toggleEmojiDialog()"/>
+
+<ch-dialog
   [(visible)]="visible"
-  [target]="targetButton?.nativeElement"
   [positions]="dialogPositions"
 >
   <ng-container content>
@@ -11,4 +12,4 @@
     >
     </ch-emoji-picker>
   </ng-container>
-</ch-dialog>`
+</ch-dialog>
