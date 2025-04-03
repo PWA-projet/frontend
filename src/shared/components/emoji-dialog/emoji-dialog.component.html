@@ -1,0 +1,14 @@
+`<ch-dialog
+  [(visible)]="visible"
+  [target]="targetButton?.nativeElement"
+  [positions]="dialogPositions"
+>
+  <ng-container content>
+    <ch-emoji-picker
+      [height]="450"
+      [width]="450"
+      (onEmojiSelected)="handleEmojiSelected($event)"
+    >
+    </ch-emoji-picker>
+  </ng-container>
+</ch-dialog>`

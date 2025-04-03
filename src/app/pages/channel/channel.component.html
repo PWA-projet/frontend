@@ -43,13 +43,15 @@
 </section>
 
 <ch-dialog
-           [(visible)]="visible"
-           [target]="emojiButton?.nativeElement"
-           [positions]="dialogPositions">
+  *ngIf="emojiButton"
+  [(visible)]="visible"
+  [target]="emojiButton.nativeElement"
+  [positions]="dialogPositions"
+>
   <ng-container content>
     <ch-emoji-picker
-      [height]="400"
-      [width]="400"
+      [height]="450"
+      [width]="450"
       (onEmojiSelected)="handleEmojiSelected($event)"
     >
     </ch-emoji-picker>
