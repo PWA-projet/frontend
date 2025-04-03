@@ -1,13 +1,15 @@
-<p-button icon="pi pi-face-smile" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="toggleEmojiDialog()"/>
+<p-button *ngIf="!isSmallScreen" #emojiButton icon="pi pi-face-smile" [rounded]="true" severity="secondary" [style]="{ padding: '1.5rem' }" (click)="toggleEmojiDialog()"/>
 
 <ch-dialog
+  *ngIf="!isSmallScreen"
   [(visible)]="visible"
+  [target]="emojiButtonElement"
   [positions]="dialogPositions"
 >
   <ng-container content>
     <ch-emoji-picker
-      [height]="450"
-      [width]="450"
+      [height]="500"
+      [width]="500"
       (onEmojiSelected)="handleEmojiSelected($event)"
     >
     </ch-emoji-picker>
