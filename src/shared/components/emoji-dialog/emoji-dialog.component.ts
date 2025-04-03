@@ -18,10 +18,10 @@ export class EmojiDialogComponent {
   @Input() visible: boolean = false;
   @ViewChild('emojiButton', { read: ElementRef }) emojiButton!: ElementRef;
 
-  isSmallScreen: boolean = window.innerWidth <= 700;
+  isSmallScreen: boolean = window.innerWidth <= 768;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    this.isSmallScreen = window.innerWidth <= 700;
+    this.isSmallScreen = window.innerWidth <= 768;
   }
 
   dialogPositions: ConnectedPosition[] = [
